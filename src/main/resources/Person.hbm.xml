@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.Person" table="person">
+        <meta attribute="class-description">
+            This class contains the Person detail.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="full_names" type="string"/>
+        <property name="gender" column="gender" type="string"/>
+        <property name="nationalIdNo" column="nationalIdNo" type="string"/>
+        <property name="phoneNumber" column="phoneNumber" type="string"/>
+        <property name="dob" column="dob" insert="false" update="false" type="date"/>
+        <many-to-one name="nationality" class="org.restate.project.model.Country" cascade="all" not-null="true">
+            <column name="nationality" />
+        </many-to-one>
+        <property name="address" column="address" type="string"/>
+        <!--`id` int(11) NOT NULL AUTO_INCREMENT,
+  `full_names` varchar(45) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `nationality` int(11) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `nationalIdNo` varchar(45) DEFAULT NULL,
+  `phoneNumber` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,-->
+
+
+    </class>
+</hibernate-mapping>

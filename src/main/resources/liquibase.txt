@@ -1,0 +1,39 @@
+CREATE DATABASE real_estate;
+use real_estate;
+
+CREATE TABLE `country` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+
+) ;
+
+CREATE TABLE `person` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `full_names` varchar(45) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `nationality` int(11) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `nationalIdNo` varchar(45) DEFAULT NULL,
+  `phoneNumber` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(nationality) references country(id)
+) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
