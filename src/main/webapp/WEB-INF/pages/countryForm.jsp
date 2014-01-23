@@ -1,6 +1,10 @@
 <%@ taglib prefix="spring" uri="/WEB-INF/taglibs/spring.tld" %>
 <%@ taglib prefix="c" uri="/WEB-INF/taglibs/c-rt.tld" %>
 <html>
+
+<%@ include file="/WEB-INF/template/header.jsp" %>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
 <c:if test="${not empty country.id}">
     <h2>Edit Country</h2>
@@ -48,4 +52,6 @@
 </form>
 
 </body>
+
+<%@ include file="/WEB-INF/template/footer.jsp" %>
 </html>

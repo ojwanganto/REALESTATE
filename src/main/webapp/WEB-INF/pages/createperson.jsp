@@ -1,6 +1,11 @@
 <%@ taglib prefix="spring" uri="/WEB-INF/taglibs/spring.tld" %>
 <%@ taglib prefix="c" uri="/WEB-INF/taglibs/c-rt.tld" %>
 <html>
+
+<%@ include file="/WEB-INF/template/header.jsp" %>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
+
 <body>
 <c:if test="${not empty person.id}">
     <h2>Edit Person</h2>
@@ -40,7 +45,7 @@
                     <td valign="top">DOB</td>
                     <td valign="top">
                         <spring:bind path="person.dob">
-                            <input type="text" name="${status.expression}" value="${status.value}" size="10" />
+                            <input type="date" name="${status.expression}" value="${status.value}" size="10" />
                             <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                         </spring:bind>
                     </td>
@@ -80,8 +85,8 @@
                     <td>Nationality</td>
                     <td valign="top">
 
-                        <spring:bind path="person.nationality">
-                            <select name="${status.expression}" ">
+                        <spring:bind path="person.nationality.id">
+                            <select name="${status.expression}">
                             <c:forEach var="country" items="${countries}">
                                 <option
                                         <c:if test="${status.value==country.id}">selected</c:if> value="
@@ -104,4 +109,6 @@
     </form>
 
 </body>
+
+<%@ include file="/WEB-INF/template/footer.jsp" %>
 </html>

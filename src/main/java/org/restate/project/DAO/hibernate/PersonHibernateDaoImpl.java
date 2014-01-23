@@ -42,10 +42,9 @@ public class PersonHibernateDaoImpl implements PersonDAO {
     @Transactional
     @Override
     public List<Person> getPersonsList() {
-        log.info("Trying to get  number of persons ");
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Person.class);
          log.info("Got this number of persons "+ criteria.list().size());
-        criteria.addOrder(Order.asc("names"));
+        criteria.addOrder(Order.asc("name"));
         return criteria.list();
     }
 }

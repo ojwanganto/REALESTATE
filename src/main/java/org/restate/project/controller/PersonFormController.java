@@ -70,7 +70,7 @@ public class PersonFormController {
     @RequestMapping(method = RequestMethod.POST, value = "createperson.form")
     public String savePerson(
             @ModelAttribute("person") Person person,BindingResult bindingResult) {
-
+       // log.info("THHHHHHHHHHHHHHHHHHHHHHHHHHHHH "+);
         personService.savePerson(person);
 
         return SUCCESS_VIEW;

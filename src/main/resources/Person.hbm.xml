@@ -15,20 +15,10 @@
         <property name="gender" column="gender" type="string"/>
         <property name="nationalIdNo" column="nationalIdNo" type="string"/>
         <property name="phoneNumber" column="phoneNumber" type="string"/>
-        <property name="dob" column="dob" insert="false" update="false" type="date"/>
-        <many-to-one name="nationality" class="org.restate.project.model.Country" cascade="all" not-null="true">
-            <column name="nationality" />
-        </many-to-one>
-        <property name="address" column="address" type="string"/>
-        <!--`id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_names` varchar(45) DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL,
-  `nationality` int(11) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `nationalIdNo` varchar(45) DEFAULT NULL,
-  `phoneNumber` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,-->
+        <property name="dob" column="dob" type="date"/>
+        <many-to-one name="nationality" cascade="persist" class="org.restate.project.model.Country" not-null="true" column="nationality"/>
 
+        <property name="address" column="address" type="string"/>
 
     </class>
 </hibernate-mapping>

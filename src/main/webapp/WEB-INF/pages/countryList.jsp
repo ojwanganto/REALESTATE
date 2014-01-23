@@ -5,6 +5,10 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-1.10.2.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dataTables_jui.css'/>">
+<%@ include file="/WEB-INF/template/header.jsp" %>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('#countries').dataTable();
@@ -12,7 +16,7 @@
 </script>
 <body>
 
-<h3>List of Countries</h3>
+<h3>Countries</h3>
 <c:choose>
     <c:when test="${fn:length(countries) > 0}">
         <table width="100%"  id="countries">
@@ -44,4 +48,6 @@
 
 
 </body>
+
+<%@ include file="/WEB-INF/template/footer.jsp" %>
 </html>
