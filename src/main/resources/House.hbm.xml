@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.House" table="house">
+        <meta attribute="class-description">
+            A table that contains House attributes.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <many-to-one name="estate" cascade="persist" class="org.restate.project.model.Estate" not-null="true" column="estate"/>
+
+        <many-to-one name="landlord" cascade="persist" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>
+
+    </class>
+</hibernate-mapping>

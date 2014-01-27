@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.Town" table="town">
+        <meta attribute="class-description">
+            A table that contains town attributes.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <many-to-one name="county" cascade="persist" class="org.restate.project.model.County" not-null="true" column="county"/>
+
+    </class>
+</hibernate-mapping>

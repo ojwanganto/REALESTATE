@@ -4,7 +4,7 @@ package org.restate.project.model;
  * A class that contains information about a house/block in an estate
  */
 public class House extends BaseObject {
-    private String code;
+
     private String description;
     private Estate estate;
     private Landlord landlord;
@@ -14,21 +14,14 @@ public class House extends BaseObject {
 
     }
 
-    public House(String name,String code, String description, Estate estate,Landlord landlord){
+    public House(String name,String description, Estate estate,Landlord landlord){
         this.setName(name);
-        this.code = code;
         this.description = description;
         this.estate = estate;
         this.landlord = landlord;
 
     }
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getDescription() {
         return description;

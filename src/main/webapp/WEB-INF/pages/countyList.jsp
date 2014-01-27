@@ -6,12 +6,14 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dataTables_jui.css'/>">
 <%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/admin_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/county_mini_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#countries').dataTable();
+        $('#counties').dataTable();
     });
 </script>
 <body>
@@ -24,17 +26,18 @@
             <tr>
                 <td>Name</td>
                 <td>Code</td>
-
+                <td>Country</td>
                 <td>Action</td>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${countries}" var="c" varStatus="status">
+            <c:forEach items="${countris}" var="c" varStatus="status">
                 <tr>
                     <td>${c.name}</td>
                     <td>${c.code}</td>
+                    <td>${c.country}</td>
 
-                    <td><a href="country.form?cid=${c.id}">Edit</a></td>
+                    <td><a href="county.form?id=${c.id}">Edit</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -42,7 +45,7 @@
 
     </c:when>
     <c:otherwise>
-        <p>${fn:length(countries)}</p>
+        <p>${fn:length(counties)}</p>
     </c:otherwise>
 </c:choose>
 

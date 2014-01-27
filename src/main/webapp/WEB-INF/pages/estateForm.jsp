@@ -3,6 +3,9 @@
 <html>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/admin_header.jsp" %>
+
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/estate_mini_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
@@ -14,7 +17,7 @@
     <h2>Add Estate</h2>
 </c:if>
 
-<spring:hasBindErrors name="country">
+<spring:hasBindErrors name="estate">
     Please fix the errors below
     <br />
 </spring:hasBindErrors>
@@ -24,7 +27,7 @@
             <tr>
                 <td>Name:</td>
                 <td>
-                    <spring:bind path="country.name">
+                    <spring:bind path="estate.name">
                         <input type="text" name="${status.expression}" value="${status.value}" size="35" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
@@ -32,9 +35,19 @@
             </tr>
 
             <tr>
-                <td valign="top">Code</td>
+                <td valign="top">Town</td>
                 <td valign="top">
-                    <spring:bind path="country.code">
+                    <spring:bind path="estate.town">
+                        <input type="text" name="${status.expression}" value="${status.value}" size="10" />
+                        <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
+                    </spring:bind>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top">Description</td>
+                <td valign="top">
+                    <spring:bind path="estate.description">
                         <input type="text" name="${status.expression}" value="${status.value}" size="10" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.TenancyAgreement" table="tenancy_agreement">
+        <meta attribute="class-description">
+            A table that contains Tenancy Agreement  attributes.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="referenceNumber" column="ref" type="string"/>
+        <many-to-one name="tenant" cascade="persist" class="org.restate.project.model.Tenant" not-null="true" column="tenant"/>
+        <many-to-one name="landlord" cascade="persist" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>
+        <property name="unit" column="unit" type="org.restate.project.model.Unit"/>
+        <property name="startDate" column="start_date" type="java.util.Date"/>
+        <property name="expiry" column="expiry" type="java.util.Date"/>
+        <property name="fee" column="fee" type="java.util.Currency"/>
+
+    </class>
+</hibernate-mapping>

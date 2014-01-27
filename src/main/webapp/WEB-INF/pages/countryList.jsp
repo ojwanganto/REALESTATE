@@ -6,6 +6,8 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dataTables_jui.css'/>">
 <%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/admin_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/country_mini_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 

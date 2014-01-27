@@ -6,14 +6,14 @@ import java.util.Date;
 /**
  * Defines an agreement between tenant and agent/landlord/lady
  */
-public class TenancyAgreement {
+public class TenancyAgreement extends BaseObject {
 
     private String referenceNumber;
     private Tenant tenant;
     private Landlord landlord;
     private Unit unit;
     private Date startDate;
-    private Date endDate;
+    private Date expiry;
     private Currency fee;
 
 
@@ -23,14 +23,14 @@ public class TenancyAgreement {
     }
 
     public TenancyAgreement(String referenceNumber,Tenant tenant,Landlord landlord,Unit unit,Date startDate,
-                            Date endDate,
+                            Date expiry,
                             Currency fee){
        this.referenceNumber = referenceNumber;
        this.tenant = tenant;
        this.landlord = landlord;
        this.unit = unit;
        this.startDate = startDate;
-       this.endDate = endDate;
+       this.expiry = expiry;
        this.fee = fee;
     }
 
@@ -75,12 +75,13 @@ public class TenancyAgreement {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+
+    public Date getExpiry() {
+        return expiry;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setExpiry(Date expiry) {
+        this.expiry = expiry;
     }
 
     public Currency getFee() {

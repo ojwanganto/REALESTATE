@@ -3,10 +3,12 @@ package org.restate.project.model;
 /**
  * Defines properties of a single unit in a house
  */
-public class Unit {
+public class Unit extends BaseObject {
 
     private House house;
     private String description;
+    private Integer category;
+    private Integer categoryType;
 
     public Unit() {
     }
@@ -30,5 +32,21 @@ public class Unit {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public Integer getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(Integer categoryType) {
+        this.categoryType = categoryType;
     }
 }

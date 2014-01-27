@@ -4,24 +4,24 @@ package org.restate.project.model;
  * Defines information about an estate located in an area
  */
 public class Estate extends BaseObject {
-    private County county;
+    private Town town;
     private String description;
 
     public Estate() {
     }
 
-    public Estate(String name,County county, String description) {
+    public Estate(String name,Town town, String description) {
         this.setName(name);
-        this.county = county;
+        this.town = town;
         this.description = description;
     }
 
-    public County getCounty() {
-        return county;
+    public Town getTown() {
+        return town;
     }
 
-    public void setCounty(County county) {
-        this.county = county;
+    public void setTown(Town town) {
+        this.town = town;
     }
 
     public String getDescription() {

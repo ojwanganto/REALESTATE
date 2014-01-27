@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#countries').dataTable();
+        $('#tenant').dataTable();
     });
 </script>
 <body>
@@ -19,22 +19,28 @@
 <h3>Tenants</h3>
 <c:choose>
     <c:when test="${fn:length(countries) > 0}">
-        <table width="100%"  id="countries">
+        <table width="100%"  id="tenant">
             <thead>
             <tr>
                 <td>Name</td>
-                <td>Code</td>
+                <td>Gender</td>
+                <td>Nationality</td>
+                <td>ID NO</td>
+                <td>Contact No</td>
 
                 <td>Action</td>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${countries}" var="c" varStatus="status">
+            <c:forEach items="${tenants}" var="c" varStatus="status">
                 <tr>
                     <td>${c.name}</td>
-                    <td>${c.code}</td>
+                    <td>${c.gender}</td>
+                    <td>${c.nationality}</td>
+                    <td>${c.nationalIdNo}</td>
+                    <td>${c.phoneNumber}</td>
 
-                    <td><a href="country.form?cid=${c.id}">Edit</a></td>
+                    <td><a href="tenant.form?id=${c.id}">Edit</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -42,7 +48,7 @@
 
     </c:when>
     <c:otherwise>
-        <p>${fn:length(countries)}</p>
+        <p>${fn:length(tenants)}</p>
     </c:otherwise>
 </c:choose>
 

@@ -8,7 +8,7 @@ import java.util.Date;
 public class Tenant extends Person {
 
     private String maritalStatus;
-    private Occupation occupation;
+    private String occupation;
 
     //default constructor
     public Tenant(){
@@ -22,7 +22,7 @@ public class Tenant extends Person {
 
     }
 
-    public Tenant(String names,Date dob,String gender,String maritalStatus,Occupation occupation){
+    public Tenant(String names,Date dob,String gender,String maritalStatus,String occupation){
         this.setName(names);
         this.setDob(dob);
         this.setGender(gender);
@@ -38,11 +38,11 @@ public class Tenant extends Person {
         this.maritalStatus = maritalStatus;
     }
 
-    public Occupation getOccupation() {
+    public String getOccupation() {
         return occupation;
     }
 
-    public void setOccupation(Occupation occupation) {
-        occupation = occupation;
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 }

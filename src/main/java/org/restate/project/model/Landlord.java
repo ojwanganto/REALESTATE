@@ -17,4 +17,5 @@ public class Landlord extends Person {
         this.setGender(gender);
 
     }
+
 }

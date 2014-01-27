@@ -28,7 +28,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost/real_estate" />
         <property name="username" value="root" />
-        <property name="password" value="stano" />
+        <property name="password" value="root" />
     </bean>
 
     <bean id="sessionFactory"
@@ -48,13 +48,54 @@
         </property>
     </bean>
 
+    <bean id="country" class="org.restate.project.model.Country"></bean>
+    <bean id="county" class="org.restate.project.model.County"></bean>
+    <bean id="estate" class="org.restate.project.model.Estate"></bean>
+    <bean id="house" class="org.restate.project.model.House"></bean>
+    <bean id="tenant" class="org.restate.project.model.Tenant"></bean>
+    <bean id="town" class="org.restate.project.model.Town"></bean>
+    <bean id="unit" class="org.restate.project.model.Unit"></bean>
+    <bean id="tenancyAgreement" class="org.restate.project.model.TenancyAgreement"></bean>
+    <bean id="landlord" class="org.restate.project.model.Landlord"></bean>
+    <bean id="enquiry" class="org.restate.project.model.Enquiry"></bean>
+
 
     <bean id="personDAO" class="org.restate.project.DAO.hibernate.PersonHibernateDaoImpl"></bean>
     <bean id="personService" class="org.restate.project.service.impl.PersonServiceImpl"></bean>
     <!--add beans for country-->
     <bean id="countryDAO" class="org.restate.project.DAO.hibernate.CountryHibernateDao"></bean>
     <bean id="countryService" class="org.restate.project.service.impl.CountryServiceImpl"></bean>
-    <bean id="country" class="org.restate.project.model.Country"></bean>
+
+    <bean id="countyDAO" class="org.restate.project.DAO.hibernate.CountyHibernateDao"></bean>
+    <bean id="countyService" class="org.restate.project.service.impl.CountyServiceImpl"></bean>
+
+    <bean id="estateDAO" class="org.restate.project.DAO.hibernate.EstateHibernateDao"></bean>
+    <bean id="estateService" class="org.restate.project.service.impl.EstateServiceImpl"></bean>
+
+    <bean id="houseDAO" class="org.restate.project.DAO.hibernate.HouseHibernateDao"></bean>
+    <bean id="houseService" class="org.restate.project.service.impl.HouseServiceImpl"></bean>
+
+    <bean id="landlordDAO" class="org.restate.project.DAO.hibernate.LandlordHibernateDao"></bean>
+    <bean id="landlordService" class="org.restate.project.service.impl.LandlordServiceImpl"></bean>
+
+    <bean id="tenancyAgreementDAO" class="org.restate.project.DAO.hibernate.TenancyAgreementHibernateDao"></bean>
+    <bean id="tenancyAgreementService" class="org.restate.project.service.impl.TenancyAgreementServiceImpl"></bean>
+
+    <bean id="tenantDAO" class="org.restate.project.DAO.hibernate.TenantHibernateDao"></bean>
+    <bean id="tenantService" class="org.restate.project.service.impl.TenantServiceImpl"></bean>
+
+    <bean id="townDAO" class="org.restate.project.DAO.hibernate.TownHibernateDao"></bean>
+    <bean id="townService" class="org.restate.project.service.impl.TownServiceImpl"></bean>
+
+    <bean id="unitDAO" class="org.restate.project.DAO.hibernate.UnitHibernateDao"></bean>
+    <bean id="unitService" class="org.restate.project.service.impl.UnitServiceImpl"></bean>
+
+    <bean id="enquiryDAO" class="org.restate.project.DAO.hibernate.EnquiryHibernateDao"></bean>
+    <bean id="enquiryService" class="org.restate.project.service.impl.EnquiryServiceImpl"></bean>
+
+
+
+
     <tx:annotation-driven />
 
     <bean id="transactionManager"

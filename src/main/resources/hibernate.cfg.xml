@@ -25,8 +25,15 @@
         <mapping class="org.restate.project.model.Person" />
 
         <!-- List of XML mapping files -->
-        <mapping resource="Person.hbm.xml"></mapping>
+        <mapping resource="County.hbm.xml"></mapping>
         <mapping resource="Country.hbm.xml"></mapping>
+        <mapping resource="Estate.hbm.xml"></mapping>
+        <mapping resource="House.hbm.xml"></mapping>
+        <mapping resource="Landlord.hbm.xml"></mapping>
+        <mapping resource="TenancyAgreement.hbm.xml"></mapping>
+        <mapping resource="Tenant.hbm.xml"></mapping>
+        <mapping resource="Town.hbm.xml"></mapping>
+        <mapping resource="Unit.hbm.xml"></mapping>
 
     </session-factory>
 </hibernate-configuration>

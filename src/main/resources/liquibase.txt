@@ -23,9 +23,109 @@ CREATE TABLE `person` (
 ) ;
 
 
+CREATE TABLE `county` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `country` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(country) references country(id)
+
+) ;
+
+
+CREATE TABLE `estate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `town` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(town) references town(id)
+
+) ;
+
+
+CREATE TABLE `house` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `estate` int(10) DEFAULT NULL,
+  `landlord` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(estate) references estate(id),
+  FOREIGN KEY(landlord) references landlord(id)
+
+) ;
+
+CREATE TABLE `landlord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `identifier` varchar(15) DEFAULT NULL,
+  `gender` int(10) DEFAULT NULL,
+  `nationality` int(10) DEFAULT NULL,
+  `contact` varchar(15) DEFAULT NULL,
+  `address` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(nationality) references country(id)
+
+) ;
+
+CREATE TABLE `tenancy_agreement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ref` varchar(25) DEFAULT NULL,
+  `tenant` int(10) DEFAULT NULL,
+  `landlord` int(10) DEFAULT NULL,
+  `unit` int(10) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `expiry` date DEFAULT NULL,
+  `fee` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(tenant) references tenant(id),
+  FOREIGN KEY(landlord) references landlord(id),
+  FOREIGN KEY(unit) references unit(id)
+
+) ;
 
 
 
+CREATE TABLE `tenant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `identifier` varchar(15) DEFAULT NULL,
+  `gender` int(10) DEFAULT NULL,
+  `nationality` int(10) DEFAULT NULL,
+  `contact` varchar(15) DEFAULT NULL,
+  `occupation` varchar(15) DEFAULT NULL,
+  `marital_status` varchar(15) DEFAULT NULL,
+  `address` varchar(25) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   FOREIGN KEY(nationality) references country(id)
+
+) ;
+
+
+CREATE TABLE `town` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `county` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(county) references county(id)
+
+) ;
+
+CREATE TABLE `unit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  `category_type` int(11) DEFAULT NULL,
+  `house` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(house) references house(id)
+
+) ;
 
 
 

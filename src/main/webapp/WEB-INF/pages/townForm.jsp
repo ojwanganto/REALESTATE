@@ -3,18 +3,20 @@
 <html>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/admin_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/town_mini_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
-<c:if test="${not empty country.id}">
+<c:if test="${not empty town.id}">
     <h2>Edit Town</h2>
 </c:if>
 
-<c:if test="${empty country.id}">
+<c:if test="${empty town.id}">
     <h2>Add Town</h2>
 </c:if>
 
-<spring:hasBindErrors name="country">
+<spring:hasBindErrors name="town">
     Please fix the errors below
     <br />
 </spring:hasBindErrors>
@@ -24,7 +26,7 @@
             <tr>
                 <td>Name:</td>
                 <td>
-                    <spring:bind path="country.name">
+                    <spring:bind path="town.name">
                         <input type="text" name="${status.expression}" value="${status.value}" size="35" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
@@ -34,7 +36,7 @@
             <tr>
                 <td valign="top">Code</td>
                 <td valign="top">
-                    <spring:bind path="country.code">
+                    <spring:bind path="town.county">
                         <input type="text" name="${status.expression}" value="${status.value}" size="10" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
