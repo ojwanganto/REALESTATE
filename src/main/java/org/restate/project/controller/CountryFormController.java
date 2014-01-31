@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("country.form")
 public class CountryFormController {
@@ -27,6 +29,11 @@ public class CountryFormController {
     private static final String SUCCESS_VIEW = "redirect:country.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
+
+    @ModelAttribute("countries")
+    public List<Country> getCountries() {
+        return countryService.getCountryList();
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "country.form")
     public String displayCountryForm(

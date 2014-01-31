@@ -9,12 +9,13 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
-<c:if test="${not empty country.id}">
-    <h2>Edit Estate</h2>
+<br>
+<c:if test="${not empty estate.id}">
+    <h3>Edit Estate</h3>
 </c:if>
 
-<c:if test="${empty country.id}">
-    <h2>Add Estate</h2>
+<c:if test="${empty estate.id}">
+    <h3>Add Estate</h3>
 </c:if>
 
 <spring:hasBindErrors name="estate">
@@ -35,10 +36,17 @@
             </tr>
 
             <tr>
-                <td valign="top">Town</td>
+                <td>Town</td>
                 <td valign="top">
-                    <spring:bind path="estate.town">
-                        <input type="text" name="${status.expression}" value="${status.value}" size="10" />
+
+                    <spring:bind path="estate.town.id">
+                        <select name="${status.expression}">
+                            <c:forEach var="town" items="${towns}">
+                                <option
+                                        <c:if test="${status.value==town.id}">selected</c:if> value="
+                                        ${town.id}">${town.name}</option>
+                            </c:forEach>
+                        </select>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>
@@ -48,7 +56,7 @@
                 <td valign="top">Description</td>
                 <td valign="top">
                     <spring:bind path="estate.description">
-                        <input type="text" name="${status.expression}" value="${status.value}" size="10" />
+                        <textarea name="${status.expression}" cols="50" rows="5"><c:out value="${status.value}"></c:out></textarea>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>

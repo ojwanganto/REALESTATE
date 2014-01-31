@@ -15,17 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("county.form")
 public class CountyFormController {
     @Autowired
     private CountyService countyService;
 
+    @Autowired
+    private CountryService cs;
     private static final String LIST_VIEW = "countyList";
     private static final String FORM_VIEW = "countyForm";
     private static final String SUCCESS_VIEW = "redirect:county.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
+
+    @ModelAttribute("countries")
+    public List<Country> getCountries() {
+        return cs.getCountryList();
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "county.form")
     public String displayCountryForm(
@@ -45,6 +54,7 @@ public class CountyFormController {
 
         return FORM_VIEW;
     }
+
 
     @RequestMapping(method = RequestMethod.POST, value = "county.form")
     public String saveCounty(

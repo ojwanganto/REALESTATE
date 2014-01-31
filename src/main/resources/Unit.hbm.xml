@@ -12,10 +12,10 @@
             <generator class="native"/>
         </id>
         <property name="name" column="name" type="string"/>
-        <property name="description" column="code" type="string"/>
+        <property name="description" column="description" type="string"/>
         <property name="category" column="category" type="integer"/>
         <property name="categoryType" column="category_type" type="integer"/>
-        <many-to-one name="house" cascade="persist" class="org.restate.project.model.House" not-null="true" column="house"/>
+        <many-to-one name="house" lazy="false" cascade="persist" class="org.restate.project.model.House" not-null="true" column="house"/>
 
     </class>
 </hibernate-mapping>

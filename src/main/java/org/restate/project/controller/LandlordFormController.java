@@ -7,13 +7,20 @@ import org.restate.project.model.Landlord;
 import org.restate.project.service.CountryService;
 import org.restate.project.service.LandlordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("landlord.form")
@@ -21,11 +28,19 @@ public class LandlordFormController {
     @Autowired
     private LandlordService landlordService;
 
+    @Autowired
+    private CountryService countryService;
     private static final String LIST_VIEW = "landlordList";
     private static final String FORM_VIEW = "landlordForm";
     private static final String SUCCESS_VIEW = "redirect:landlord.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
+
+    @ModelAttribute("countries")
+    public List<Country> getCountries() {
+        return countryService.getCountryList();
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "landlord.form")
     public String displayLandlordForm(
@@ -55,5 +70,13 @@ public class LandlordFormController {
         return SUCCESS_VIEW;
     }
 
+    @InitBinder
+    private void dateBinder(WebDataBinder binder) {
+        // The date format to parse or output your dates
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+
+        // Register them as custom editors for the Date type
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
 }

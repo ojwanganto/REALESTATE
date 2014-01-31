@@ -3,15 +3,18 @@
 <html>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/tenant_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/tenant_mini_header.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
+<br>
 <c:if test="${not empty tenant.id}">
-    <h2>Edit Tenant</h2>
+    <h3>Edit Tenant</h3>
 </c:if>
 
 <c:if test="${empty tenant.id}">
-    <h2>Add Tenant</h2>
+    <h3>Add Tenant</h3>
 </c:if>
 
 <spring:hasBindErrors name="tenant">
@@ -35,8 +38,8 @@
                 <td valign="top">
                     <spring:bind path="tenant.gender">
                     <select name="${status.expression}">
-                        <option>Male</option>
-                        <option>Female</option>
+                        <option value="M">M</option>
+                        <option value="F">F</option>
                         </spring:bind>
                 </td>
             </tr>

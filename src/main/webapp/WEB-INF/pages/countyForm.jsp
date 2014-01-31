@@ -8,12 +8,13 @@
 <%@ include file="/WEB-INF/template/local_headers/mini_headers/county_mini_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
+<br>
 <c:if test="${not empty county.id}">
-    <h2>Edit County</h2>
+    <h3>Edit County</h3>
 </c:if>
 
 <c:if test="${empty county.id}">
-    <h2>Add County</h2>
+    <h3>Add County</h3>
 </c:if>
 
 <spring:hasBindErrors name="county">
@@ -34,10 +35,18 @@
             </tr>
 
             <tr>
-                <td>Country:</td>
-                <td>
-                    <spring:bind path="county.country">
-                        <input type="text" name="${status.expression}" value="${status.value}" size="35" />
+                <td>Country</td>
+                <td valign="top">
+
+                    <spring:bind path="county.country.id">
+                        <select name="${status.expression}">
+                            <c:forEach var="country" items="${countries}">
+                                <option
+                                        <c:if test="${status.value==country.id}">selected</c:if> value="
+                                        ${country.id}">${country.code}
+                                    - ${country.name} </option>
+                            </c:forEach>
+                        </select>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>

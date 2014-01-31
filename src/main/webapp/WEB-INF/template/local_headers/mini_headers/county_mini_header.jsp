@@ -1,8 +1,8 @@
 <miniHeader>
     <ul>
 
-        <li><a href="estate.form">Add County</a></li>
-        <li><a href="town.form">List Counties</a></li>
+        <li><a href="county.form">Add County</a></li>
+        <li><a href="county.list">List County</a></li>
 
     </ul>
 </miniHeader>

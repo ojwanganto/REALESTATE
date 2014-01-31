@@ -13,9 +13,9 @@
         </id>
         <property name="name" column="name" type="string"/>
         <property name="description" column="description" type="string"/>
-        <many-to-one name="estate" cascade="persist" class="org.restate.project.model.Estate" not-null="true" column="estate"/>
+        <many-to-one name="estate" lazy="false" cascade="persist" class="org.restate.project.model.Estate" not-null="true" column="estate"/>
 
-        <many-to-one name="landlord" cascade="persist" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>
+        <many-to-one name="landlord" lazy="false" cascade="persist" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>
 
     </class>
 </hibernate-mapping>

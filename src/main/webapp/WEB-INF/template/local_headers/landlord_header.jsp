@@ -1,6 +1,9 @@
 <localHeader>
     <ul>
-        <li><a href="landlord.form">Manage Landlord</a></li>
+        <li><a href="manageLandlord.aspx">Manage Landlord</a></li>
 
     </ul>
+    <br/>
+    <br/>
+    <br/>
 </localHeader>

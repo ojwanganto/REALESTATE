@@ -17,7 +17,7 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Towns</h3>
 <c:choose>
     <c:when test="${fn:length(towns) > 0}">
@@ -34,7 +34,7 @@
             <c:forEach items="${towns}" var="c" varStatus="status">
                 <tr>
                     <td>${c.name}</td>
-                    <td>${c.county}</td>
+                    <td>${c.county.name}</td>
 
                     <td><a href="town.form?id=${c.id}">Edit</a></td>
                 </tr>

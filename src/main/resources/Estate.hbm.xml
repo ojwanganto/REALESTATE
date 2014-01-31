@@ -13,7 +13,7 @@
         </id>
         <property name="name" column="name" type="string"/>
         <property name="description" column="description" type="string"/>
-        <many-to-one name="town" cascade="persist" class="org.restate.project.model.Town" not-null="true" column="town"/>
+        <many-to-one name="town" lazy="false" cascade="persist" class="org.restate.project.model.Town" not-null="true" column="town"/>
 
     </class>
 </hibernate-mapping>

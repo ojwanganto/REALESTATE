@@ -8,12 +8,13 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
+<br>
 <c:if test="${not empty country.id}">
-    <h2>Edit Country</h2>
+    <h3>Edit Country</h3>
 </c:if>
 
 <c:if test="${empty country.id}">
-    <h2>Add Country</h2>
+    <h3>Add Country</h3>
 </c:if>
 
 <spring:hasBindErrors name="country">

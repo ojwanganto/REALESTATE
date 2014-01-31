@@ -17,10 +17,10 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Estates</h3>
 <c:choose>
-    <c:when test="${fn:length(countries) > 0}">
+    <c:when test="${fn:length(estates) > 0}">
         <table width="100%"  id="estates">
             <thead>
             <tr>
@@ -34,7 +34,7 @@
             <c:forEach items="${estates}" var="c" varStatus="status">
                 <tr>
                     <td>${c.name}</td>
-                    <td>${c.town}</td>
+                    <td>${c.town.name}</td>
                     <td>${c.description}</td>
 
                     <td><a href="estate.form?id=${c.id}">Edit</a></td>

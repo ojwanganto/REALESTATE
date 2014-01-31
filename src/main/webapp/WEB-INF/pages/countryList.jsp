@@ -17,7 +17,7 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Countries</h3>
 <c:choose>
     <c:when test="${fn:length(countries) > 0}">

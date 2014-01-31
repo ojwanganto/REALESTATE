@@ -100,17 +100,14 @@ localHeader li a:active {background-position: 0px -72px;}
 localHeader .dropdown {display: block; float: right; width: 7px; height: 5px; background: url(../images/minimenu-img/drop-down.png) no-repeat; margin: -20px 15px 0px 12px;}
 
 
-miniHeader {border-top: 1px solid #272b76; border-bottom: 1px solid #15185a; border-radius: 3px; }
+miniHeader {border-top: 1px solid #272b76; border-bottom: 1px solid #15185a; border-radius: 3px; clear: both}
 miniHeader ul {margin: 0px; padding: 0px; border-left: 1px solid #272b76;}
 miniHeader li {list-style: none; float: left; border-right: 1px solid #272b76; position: relative;}
 miniHeader li.first, miniHeader li.first a {border-top-left-radius: 2px; border-bottom-left-radius: 2px; -moz-border-top-left-radius: 2px; -moz-border-bottom-left-radius: 2px;}
 miniHeader li.last, miniHeader li.last a {border-top-right-radius: 2px; border-bottom-right-radius: 2px; -moz-border-top-right-radius: 2px; -moz-border-bottom-right-radius: 2px;}
-miniHeader li.drop a {padding-right: 30px;}
-miniHeader li a {display: block; padding: 9px 23px 10px; text-decoration: none; background-image: url(../images/minimenu-img/navigation-sprite-green.png); background-repeat: repeat-x; font-size: 12px; color: #fff; border-top: 1px solid #839158; border-left: 1px solid #69793e; text-shadow: 0px -1px 0px #000;}
-miniHeader li a {background-position: 0px 0px;}
-miniHeader li a:hover, miniHeader li.active a {background-position: 0px -36px;}
+
+miniHeader li a {display: block; padding: 9px 23px 10px; text-decoration: none;font-size: 12px; color: #15185a; border-top: 1px solid #839158; border-left: 1px solid #69793e; text-shadow: 0px -1px 0px #000;}
 miniHeader li a:active {background-position: 0px -72px;}
-miniHeader .dropdown {display: block; float: right; width: 7px; height: 5px; background: url(../images/minimenu-img/drop-down.png) no-repeat; margin: -20px 15px 0px 12px;}
 
 
 

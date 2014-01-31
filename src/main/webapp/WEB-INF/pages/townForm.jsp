@@ -8,12 +8,13 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 <body>
+<br>
 <c:if test="${not empty town.id}">
-    <h2>Edit Town</h2>
+    <h3>Edit Town</h3>
 </c:if>
 
 <c:if test="${empty town.id}">
-    <h2>Add Town</h2>
+    <h3>Add Town</h3>
 </c:if>
 
 <spring:hasBindErrors name="town">
@@ -34,10 +35,17 @@
             </tr>
 
             <tr>
-                <td valign="top">Code</td>
+                <td>County</td>
                 <td valign="top">
-                    <spring:bind path="town.county">
-                        <input type="text" name="${status.expression}" value="${status.value}" size="10" />
+
+                    <spring:bind path="town.county.id">
+                        <select name="${status.expression}">
+                            <c:forEach var="county" items="${counties}">
+                                <option
+                                        <c:if test="${status.value==county.id}">selected</c:if> value="
+                                        ${county.id}">${county.name}</option>
+                            </c:forEach>
+                        </select>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>

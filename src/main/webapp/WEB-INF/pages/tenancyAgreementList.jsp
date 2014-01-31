@@ -15,7 +15,7 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Tenancy Agreements</h3>
 <c:choose>
     <c:when test="${fn:length(countries) > 0}">

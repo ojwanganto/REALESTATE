@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dataTables_jui.css'/>">
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="/WEB-INF/template/local_headers/property_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/house_mini_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 
 <script type="text/javascript">
@@ -15,7 +16,7 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Houses</h3>
 <c:choose>
     <c:when test="${fn:length(houses) > 0}">
@@ -34,8 +35,8 @@
                 <tr>
                     <td>${c.name}</td>
                     <td>${c.description}</td>
-                    <td>${c.estate}</td>
-                    <td>${c.landlord}</td>
+                    <td>${c.estate.name}</td>
+                    <td>${c.landlord.name}</td>
 
                     <td><a href="house.form?id=${c.id}">Edit</a></td>
                 </tr>

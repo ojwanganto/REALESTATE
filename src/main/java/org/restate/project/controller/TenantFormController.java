@@ -15,17 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("tenant.form")
 public class TenantFormController {
     @Autowired
     private TenantService tenantService;
 
+    @Autowired
+    private CountryService countryService;
     private static final String LIST_VIEW = "tenantList";
     private static final String FORM_VIEW = "tenantForm";
     private static final String SUCCESS_VIEW = "redirect:tenant.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
+
+    @ModelAttribute("countries")
+    public List<Country> getCountries() {
+        return countryService.getCountryList();
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "tenant.form")
     public String displayCountryForm(

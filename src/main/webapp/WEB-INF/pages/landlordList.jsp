@@ -6,7 +6,8 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/dataTables_jui.css'/>">
 <%@ include file="/WEB-INF/template/header.jsp" %>
-
+<%@ include file="/WEB-INF/template/local_headers/landlord_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/landlord_mini_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
 
 <script type="text/javascript">
@@ -15,7 +16,7 @@
     });
 </script>
 <body>
-
+<br>
 <h3>Landlords</h3>
 <c:choose>
     <c:when test="${fn:length(landlords) > 0}">
@@ -36,7 +37,7 @@
                 <tr>
                     <td>${c.name}</td>
                     <td>${c.gender}</td>
-                    <td>${c.nationality}</td>
+                    <td>${c.nationality.name}</td>
                     <td>${c.nationalIdNo}</td>
                     <td>${c.phoneNumber}</td>
 

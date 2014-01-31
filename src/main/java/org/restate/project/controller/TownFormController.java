@@ -3,8 +3,10 @@ package org.restate.project.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.restate.project.model.Country;
+import org.restate.project.model.County;
 import org.restate.project.model.Town;
 import org.restate.project.service.CountryService;
+import org.restate.project.service.CountyService;
 import org.restate.project.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,17 +17,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("town.form")
 public class TownFormController {
     @Autowired
     private TownService townService;
 
+    @Autowired
+    private CountyService countyService;
     private static final String LIST_VIEW = "townList";
     private static final String FORM_VIEW = "townForm";
     private static final String SUCCESS_VIEW = "redirect:town.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
+
+
+    @ModelAttribute("counties")
+    public List<County> getCounties() {
+        return countyService.getCountyList();
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "town.form")
     public String townForm(
