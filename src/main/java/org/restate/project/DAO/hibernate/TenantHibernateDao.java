@@ -8,10 +8,13 @@ import org.hibernate.criterion.Order;
 import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.TenantDAO;
 import org.restate.project.model.Country;
+import org.restate.project.model.Person;
 import org.restate.project.model.Tenant;
+import org.restate.project.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,11 +25,20 @@ public class TenantHibernateDao implements TenantDAO {
     @Autowired
     private SessionFactory sessionfactory;
 
+    @Autowired
+    private PersonService personService;
     private Log log = LogFactory.getLog(this.getClass());
 
     @Transactional
     @Override
     public Tenant saveTenant(Tenant tenant) {
+        Person person = new Person();
+        person.setDateCreated(new Date());
+        person.setFirstName(tenant.getFirstName());
+        person.setMiddleName(tenant.getMiddleName());
+        person.setLastName(tenant.getLastName());
+        Person savedP = personService.savePerson(person);
+        tenant.setPersonId(savedP);
         sessionfactory.getCurrentSession().saveOrUpdate(tenant);
         log.info("Tenant saved successfully");
         return tenant;

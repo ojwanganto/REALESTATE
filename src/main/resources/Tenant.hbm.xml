@@ -11,15 +11,19 @@
         <id name="id" type="int" column="id">
             <generator class="native"/>
         </id>
-        <property name="name" column="name" type="string"/>
+        <property name="firstName" column="first_name" type="string"/>
+        <property name="middleName" column="middle_name" type="string"/>
+        <property name="lastName" column="last_name" type="string"/>
         <property name="dob" column="dob" type="java.util.Date"/>
         <property name="nationalIdNo" column="identifier" type="string"/>
         <property name="gender" column="gender" type="string"/>
         <many-to-one name="nationality" lazy="false" cascade="persist" class="org.restate.project.model.Country" not-null="true" column="nationality"/>
-        <property name="phoneNumber" column="contact" type="string"/>
+        <many-to-one name="personId" cascade="delete" class="org.restate.project.model.Person" unique="true" column="person_id" />
+        <property name="phoneNumber" column="mobile_no" type="string"/>
         <property name="address" column="address" type="string"/>
         <property name="occupation" column="occupation" type="string"/>
         <property name="maritalStatus" column="marital_status" type="string"/>
+        <property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
 
     </class>
 </hibernate-mapping>

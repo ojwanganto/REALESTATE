@@ -36,7 +36,7 @@
             <tbody>
             <c:forEach items="${tenants}" var="c" varStatus="status">
                 <tr>
-                    <td>${c.name}</td>
+                    <td><c:out value="${c.firstName}  ${c.middleName}  ${c.lastName}" /></td>
                     <td>${c.gender}</td>
                     <td>${c.nationality.name}</td>
                     <td>${c.nationalIdNo}</td>

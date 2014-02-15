@@ -70,10 +70,9 @@ public class LandlordFormController {
         return SUCCESS_VIEW;
     }
 
-    @InitBinder
     private void dateBinder(WebDataBinder binder) {
         // The date format to parse or output your dates
-        SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         // Register them as custom editors for the Date type
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));

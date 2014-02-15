@@ -25,6 +25,7 @@
         <mapping class="org.restate.project.model.Person" />
 
         <!-- List of XML mapping files -->
+        <mapping resource="Person.hbm.xml"></mapping>
         <mapping resource="County.hbm.xml"></mapping>
         <mapping resource="Country.hbm.xml"></mapping>
         <mapping resource="Estate.hbm.xml"></mapping>

@@ -1,3 +1,4 @@
+DROP database real_estate;
 CREATE DATABASE real_estate;
 use real_estate;
 
@@ -11,15 +12,13 @@ CREATE TABLE `country` (
 
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_names` varchar(45) DEFAULT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `middle_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
-  `nationality` int(11) DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `nationalIdNo` varchar(45) DEFAULT NULL,
-  `phoneNumber` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY(nationality) references country(id)
+  `date_created` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ;
 
 
@@ -33,6 +32,53 @@ CREATE TABLE `county` (
 
 ) ;
 
+CREATE TABLE `landlord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `middle_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `person_id` int(11) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `identifier` varchar(15) DEFAULT NULL,
+  `gender` varchar(5) DEFAULT NULL,
+  `nationality` int(10) DEFAULT NULL,
+  `mobile_no` varchar(15) DEFAULT NULL,
+  `address` varchar(25) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(nationality) references country(id)
+
+) ;
+
+
+CREATE TABLE `tenant` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `first_name` varchar(45) DEFAULT NULL,
+   `middle_name` varchar(45) DEFAULT NULL,
+   `last_name` varchar(45) DEFAULT NULL,
+   `person_id` int(11) NOT NULL,
+   `dob` date DEFAULT NULL,
+  `identifier` varchar(15) DEFAULT NULL,
+  `gender` varchar(5) DEFAULT NULL,
+  `nationality` int(10) DEFAULT NULL,
+  `mobile_no` varchar(15) DEFAULT NULL,
+  `occupation` varchar(15) DEFAULT NULL,
+  `marital_status` varchar(15) DEFAULT NULL,
+  `address` varchar(25) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   FOREIGN KEY(nationality) references country(id)
+
+) ;
+
+CREATE TABLE `town` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `county` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(county) references county(id)
+
+) ;
 
 CREATE TABLE `estate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,63 +103,6 @@ CREATE TABLE `house` (
 
 ) ;
 
-CREATE TABLE `landlord` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `identifier` varchar(15) DEFAULT NULL,
-  `gender` varchar(5) DEFAULT NULL,
-  `nationality` int(10) DEFAULT NULL,
-  `contact` varchar(15) DEFAULT NULL,
-  `address` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY(nationality) references country(id)
-
-) ;
-
-CREATE TABLE `tenancy_agreement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ref` varchar(25) DEFAULT NULL,
-  `tenant` int(10) DEFAULT NULL,
-  `landlord` int(10) DEFAULT NULL,
-  `unit` int(10) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `expiry` date DEFAULT NULL,
-  `fee` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY(tenant) references tenant(id),
-  FOREIGN KEY(landlord) references landlord(id),
-  FOREIGN KEY(unit) references unit(id)
-
-) ;
-
-
-
-CREATE TABLE `tenant` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `identifier` varchar(15) DEFAULT NULL,
-  `gender` varchar(5) DEFAULT NULL,
-  `nationality` int(10) DEFAULT NULL,
-  `contact` varchar(15) DEFAULT NULL,
-  `occupation` varchar(15) DEFAULT NULL,
-  `marital_status` varchar(15) DEFAULT NULL,
-  `address` varchar(25) DEFAULT NULL,
-   PRIMARY KEY (`id`),
-   FOREIGN KEY(nationality) references country(id)
-
-) ;
-
-
-CREATE TABLE `town` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `county` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY(county) references county(id)
-
-) ;
 
 CREATE TABLE `unit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -126,6 +115,27 @@ CREATE TABLE `unit` (
   FOREIGN KEY(house) references house(id)
 
 ) ;
+
+CREATE TABLE `tenancy_agreement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ref` varchar(25) DEFAULT NULL,
+  `tenant` int(10) DEFAULT NULL,
+  `landlord` int(10) DEFAULT NULL,
+  `unit` int(10) DEFAULT NULL,
+  `house` int(10) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `expiry` date DEFAULT NULL,
+  `rent` decimal(10,2) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+  `deposit` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(tenant) references tenant(id),
+  FOREIGN KEY(landlord) references landlord(id),
+  FOREIGN KEY(unit) references unit(id)
+
+) ;
+
+
 
 
 

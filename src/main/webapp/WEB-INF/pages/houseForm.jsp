@@ -69,7 +69,7 @@
                             <c:forEach var="landlord" items="${landlords}">
                                 <option
                                         <c:if test="${status.value==landlord.id}">selected</c:if> value="
-                                        ${landlord.id}">${landlord.name}</option>
+                                        ${landlord.id}">${landlord.firstName} ${landlord.middleName} ${landlord.lastName}</option>
                             </c:forEach>
                         </select>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>

@@ -12,26 +12,30 @@ public class TenancyAgreement extends BaseObject {
     private Tenant tenant;
     private Landlord landlord;
     private Unit unit;
-    private Date startDate;
-    private Date expiry;
-    private Currency fee;
+    private House house;
+    private Date startDate = new Date();
+    private Date expiry = new Date();
+    private Double rentPayable;
+    private Double deposit;
+    private Date dateCreated;
+
+
 
 
     //default constructor
     public TenancyAgreement(){
-
     }
 
     public TenancyAgreement(String referenceNumber,Tenant tenant,Landlord landlord,Unit unit,Date startDate,
                             Date expiry,
-                            Currency fee){
+                            Double rentPayable){
        this.referenceNumber = referenceNumber;
        this.tenant = tenant;
        this.landlord = landlord;
        this.unit = unit;
        this.startDate = startDate;
        this.expiry = expiry;
-       this.fee = fee;
+       this.rentPayable = rentPayable;
     }
 
 
@@ -84,11 +88,35 @@ public class TenancyAgreement extends BaseObject {
         this.expiry = expiry;
     }
 
-    public Currency getFee() {
-        return fee;
+    public Double getRentPayable() {
+        return rentPayable;
     }
 
-    public void setFee(Currency fee) {
-        this.fee = fee;
+    public void setRentPayable(Double rentPayable) {
+        this.rentPayable = rentPayable;
+    }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
     }
 }

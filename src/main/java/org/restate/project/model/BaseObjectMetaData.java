@@ -1,22 +1,20 @@
 package org.restate.project.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Defines properties of base object like id and name.
- * Should be extended by other classes
+ *Base class for metadata
  */
-public abstract class BaseObject implements Serializable {
+public abstract class BaseObjectMetaData {
+
     private String uuid;
     private Integer id;
     private String name;
     private Date dateCreated;
     private Person createdBy;
-    private boolean voided;
-    private Person voidedBy;
-    private Date dateVoided;
-
+    private boolean retired;
+    private Person retiredBy;
+    private Date dateRetired;
 
     public String getUuid() {
         return uuid;
@@ -58,27 +56,27 @@ public abstract class BaseObject implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public boolean isVoided() {
-        return voided;
+    public boolean isRetired() {
+        return retired;
     }
 
-    public void setVoided(boolean voided) {
-        this.voided = voided;
+    public void setRetired(boolean retired) {
+        this.retired = retired;
     }
 
-    public Person getVoidedBy() {
-        return voidedBy;
+    public Person getRetiredBy() {
+        return retiredBy;
     }
 
-    public void setVoidedBy(Person voidedBy) {
-        this.voidedBy = voidedBy;
+    public void setRetiredBy(Person retiredBy) {
+        this.retiredBy = retiredBy;
     }
 
-    public Date getDateVoided() {
-        return dateVoided;
+    public Date getDateRetired() {
+        return dateRetired;
     }
 
-    public void setDateVoided(Date dateVoided) {
-        this.dateVoided = dateVoided;
+    public void setDateRetired(Date dateRetired) {
+        this.dateRetired = dateRetired;
     }
 }

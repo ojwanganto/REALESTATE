@@ -7,38 +7,21 @@ import java.util.Date;
  */
 public class Person extends BaseObject {
 
-    private Date dob;
+    private Date dob = new Date();
     private String gender;
-    private String nationalIdNo;
-    private Country nationality;
-    private String phoneNumber;
-    private String address;
+    private String firstName;
+    private String middleName;
+    private String lastName;
 
     //default constructor
     public Person(){
-
     }
 
-
-    public Person(String name,Date dob,String gender,String nationalIdNo,Country nationality,
-                  String phoneNumber ){
+    public Person(String name,Date dob,String gender){
         this.setName(name);
         this.dob = dob;
         this.gender = gender;
-        this.nationalIdNo = nationalIdNo;
-        this.nationality = nationality;
-        this.phoneNumber = phoneNumber;
-
     }
-
-    public Person(String names,Date dob,String gender){
-        this.setName(names);
-        this.dob = dob;
-        this.gender = gender;
-
-    }
-
-
 
     public Date getDob() {
         return dob;
@@ -56,35 +39,27 @@ public class Person extends BaseObject {
         this.gender = gender;
     }
 
-    public String getNationalIdNo() {
-        return nationalIdNo;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNationalIdNo(String nationalIdNo) {
-        this.nationalIdNo = nationalIdNo;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Country getNationality() {
-        return nationality;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setNationality(Country nationality) {
-        this.nationality = nationality;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

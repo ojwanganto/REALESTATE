@@ -58,6 +58,7 @@
     <bean id="tenancyAgreement" class="org.restate.project.model.TenancyAgreement"></bean>
     <bean id="landlord" class="org.restate.project.model.Landlord"></bean>
     <bean id="enquiry" class="org.restate.project.model.Enquiry"></bean>
+    <bean id="person" class="org.restate.project.model.Person"></bean>
 
 
     <bean id="personDAO" class="org.restate.project.DAO.hibernate.PersonHibernateDaoImpl"></bean>

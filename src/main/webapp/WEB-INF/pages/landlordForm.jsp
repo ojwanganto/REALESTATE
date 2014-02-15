@@ -5,7 +5,19 @@
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="/WEB-INF/template/local_headers/landlord_header.jsp" %>
 <%@ include file="/WEB-INF/template/local_headers/mini_headers/landlord_mini_header.jsp" %>
+
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-1.10.2.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui-1.10.4.custom.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/ui-lightness/jquery-ui-1.10.4.custom.min.css'/>">
+
+<script type="text/javascript">
+
+    $(function() {
+        $("#dob").datepicker();
+    });
+
+</script>
 <body>
 <br>
 <c:if test="${not empty landlord.id}">
@@ -24,9 +36,27 @@
     <fieldset>
         <table>
             <tr>
-                <td>Name:</td>
+                <td>First Name:</td>
                 <td>
-                    <spring:bind path="landlord.name">
+                    <spring:bind path="landlord.firstName">
+                        <input type="text" name="${status.expression}" value="${status.value}" size="35" />
+                        <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
+                    </spring:bind>
+                </td>
+            </tr>
+            <tr>
+                <td>Middle Name:</td>
+                <td>
+                    <spring:bind path="landlord.middleName">
+                        <input type="text" name="${status.expression}" value="${status.value}" size="35" />
+                        <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
+                    </spring:bind>
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>
+                    <spring:bind path="landlord.lastName">
                         <input type="text" name="${status.expression}" value="${status.value}" size="35" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
@@ -46,7 +76,7 @@
                 <td valign="top">DOB</td>
                 <td valign="top">
                     <spring:bind path="landlord.dob">
-                        <input type="date" name="${status.expression}" <%--value="${status.value}" --%>/>
+                        <input type="text" name="${status.expression}" id="dob" value="${status.value}" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>

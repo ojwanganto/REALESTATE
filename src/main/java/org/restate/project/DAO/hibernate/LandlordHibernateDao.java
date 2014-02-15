@@ -5,13 +5,14 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
-import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.LandlordDAO;
-import org.restate.project.model.Country;
 import org.restate.project.model.Landlord;
+import org.restate.project.model.Person;
+import org.restate.project.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,12 +23,24 @@ public class LandlordHibernateDao implements LandlordDAO {
     @Autowired
     private SessionFactory sessionfactory;
 
+    @Autowired
+    private PersonService personService;
+
     private Log log = LogFactory.getLog(this.getClass());
 
 
     @Transactional
     @Override
     public Landlord saveLandlord(Landlord landlord) {
+
+        Person person = new Person();
+        person.setDateCreated(new Date());
+        person.setFirstName(landlord.getFirstName());
+        person.setMiddleName(landlord.getMiddleName());
+        person.setLastName(landlord.getLastName());
+        Person savedP = personService.savePerson(person);
+        landlord.setPersonId(savedP);
+        landlord.setDateCreated(new Date());
         sessionfactory.getCurrentSession().saveOrUpdate(landlord);
         log.info("Landlord saved successfully");
         return landlord;
