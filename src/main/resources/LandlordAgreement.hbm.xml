@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.LandlordAgreement" table="landlord_agreement">
+        <meta attribute="class-description">
+            A table that contains Landlord Agreement  attributes.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="referenceNumber" column="ref" type="string"/>
+        <many-to-one name="landlord" lazy="false" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>
+        <many-to-one name="house" lazy="false" class="org.restate.project.model.House" unique="true" not-null="true" column="house"/>
+        <property name="effectiveDate" column="effective_date" type="java.util.Date"/>
+        <property name="expiryDate" column="expiry_date" type="java.util.Date"/>
+        <property name="dateOfRentRemittance" column="rent_submission_date" type="java.util.Date"/>
+        <property name="tenantsDeadlineForRentPayment" column="rent_collection_date" type="java.util.Date"/>
+        <property name="commissionOnRent" column="commission" type="double"/>
+        <property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
+
+    </class>
+</hibernate-mapping>
+

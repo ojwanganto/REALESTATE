@@ -2,7 +2,6 @@ package org.restate.project.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.restate.project.model.Country;
 import org.restate.project.model.County;
 import org.restate.project.model.Estate;
 import org.restate.project.model.House;
@@ -10,7 +9,6 @@ import org.restate.project.model.Landlord;
 import org.restate.project.model.TenancyAgreement;
 import org.restate.project.model.Tenant;
 import org.restate.project.model.Unit;
-import org.restate.project.service.CountryService;
 import org.restate.project.service.CountyService;
 import org.restate.project.service.EstateService;
 import org.restate.project.service.HouseService;
@@ -30,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

@@ -2,11 +2,9 @@ package org.restate.project.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.restate.project.model.Country;
 import org.restate.project.model.Estate;
 import org.restate.project.model.House;
 import org.restate.project.model.Landlord;
-import org.restate.project.service.CountryService;
 import org.restate.project.service.EstateService;
 import org.restate.project.service.HouseService;
 import org.restate.project.service.LandlordService;

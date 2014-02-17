@@ -56,9 +56,11 @@
     <bean id="town" class="org.restate.project.model.Town"></bean>
     <bean id="unit" class="org.restate.project.model.Unit"></bean>
     <bean id="tenancyAgreement" class="org.restate.project.model.TenancyAgreement"></bean>
+    <bean id="landlordAgreement" class="org.restate.project.model.LandlordAgreement"></bean>
     <bean id="landlord" class="org.restate.project.model.Landlord"></bean>
     <bean id="enquiry" class="org.restate.project.model.Enquiry"></bean>
     <bean id="person" class="org.restate.project.model.Person"></bean>
+    <bean id="agent" class="org.restate.project.model.Agent"></bean>
 
 
     <bean id="personDAO" class="org.restate.project.DAO.hibernate.PersonHibernateDaoImpl"></bean>
@@ -82,6 +84,9 @@
     <bean id="tenancyAgreementDAO" class="org.restate.project.DAO.hibernate.TenancyAgreementHibernateDao"></bean>
     <bean id="tenancyAgreementService" class="org.restate.project.service.impl.TenancyAgreementServiceImpl"></bean>
 
+    <bean id="landlordAgreementDAO" class="org.restate.project.DAO.hibernate.LandlordAgreementHibernateDao"></bean>
+    <bean id="landlordAgreementService" class="org.restate.project.service.impl.LandlordAgreementServiceImpl"></bean>
+
     <bean id="tenantDAO" class="org.restate.project.DAO.hibernate.TenantHibernateDao"></bean>
     <bean id="tenantService" class="org.restate.project.service.impl.TenantServiceImpl"></bean>
 
@@ -93,6 +98,9 @@
 
     <bean id="enquiryDAO" class="org.restate.project.DAO.hibernate.EnquiryHibernateDao"></bean>
     <bean id="enquiryService" class="org.restate.project.service.impl.EnquiryServiceImpl"></bean>
+
+    <bean id="agentDAO" class="org.restate.project.DAO.hibernate.AgentHibernateDao"></bean>
+    <bean id="agentService" class="org.restate.project.service.impl.AgentServiceImpl"></bean>
 
 
 

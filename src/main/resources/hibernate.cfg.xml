@@ -32,9 +32,11 @@
         <mapping resource="House.hbm.xml"></mapping>
         <mapping resource="Landlord.hbm.xml"></mapping>
         <mapping resource="TenancyAgreement.hbm.xml"></mapping>
+        <mapping resource="LandlordAgreement.hbm.xml"></mapping>
         <mapping resource="Tenant.hbm.xml"></mapping>
         <mapping resource="Town.hbm.xml"></mapping>
         <mapping resource="Unit.hbm.xml"></mapping>
+        <mapping resource="Agent.hbm.xml"></mapping>
 
     </session-factory>
 </hibernate-configuration>

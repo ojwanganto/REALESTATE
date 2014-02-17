@@ -1,12 +1,12 @@
 package org.restate.project.DAO.hibernate;
 
-import org.restate.project.DAO.PersonDAO;
-import org.restate.project.model.Person;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.restate.project.DAO.PersonDAO;
+import org.restate.project.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

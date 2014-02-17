@@ -3,12 +3,10 @@ package org.restate.project.reports;
 import org.restate.project.model.Agent;
 import org.restate.project.service.AgentService;
 
-import java.util.Date;
-
 /**
- * A model for Tenancy Agreement document
+ * A model for Landlord Agreement document
  */
-public class TenancyAgreementModel {
+public class LandlordAgreementModel {
 
     private AgentService agentService;
 
@@ -20,14 +18,42 @@ public class TenancyAgreementModel {
     private String agentName = agent.getName();
     private String agentAddress = agent.getAddress();
     private String agentCellPhone = agent.getPhoneContact();
+
+
     private String houseName;
-    private String tenantName;
-    private String tenantAddress;
-    private String tenantCellPhone;
-    private String tenantIDNo;
+    private String landlordName;
+    private String landlordAddress;
+    private String landlordCellPhone;
+    private String landlordIDNo;
     private String effectiveDate;
     private String expiryDate;
-    private String rent;
+    private String commissionOnRent;
+    private String dateOfRentSubmission;
+    private String tenantRentPaymentDeadline;
+
+    public String getCommissionOnRent() {
+        return commissionOnRent;
+    }
+
+    public void setCommissionOnRent(String commissionOnRent) {
+        this.commissionOnRent = commissionOnRent;
+    }
+
+    public String getDateOfRentSubmission() {
+        return dateOfRentSubmission;
+    }
+
+    public void setDateOfRentSubmission(String dateOfRentSubmission) {
+        this.dateOfRentSubmission = dateOfRentSubmission;
+    }
+
+    public String getTenantRentPaymentDeadline() {
+        return tenantRentPaymentDeadline;
+    }
+
+    public void setTenantRentPaymentDeadline(String tenantRentPaymentDeadline) {
+        this.tenantRentPaymentDeadline = tenantRentPaymentDeadline;
+    }
 
     public String getCurrentDate() {
         return currentDate;
@@ -69,36 +95,36 @@ public class TenancyAgreementModel {
         this.houseName = houseName;
     }
 
-    public String getTenantName() {
-        return tenantName;
+    public String getLandlordName() {
+        return landlordName;
     }
 
-    public void setTenantName(String tenantName) {
-        this.tenantName = tenantName;
+    public void setLandlordName(String landlordName) {
+        this.landlordName = landlordName;
     }
 
-    public String getTenantAddress() {
-        return tenantAddress;
+    public String getLandlordAddress() {
+        return landlordAddress;
     }
 
-    public void setTenantAddress(String tenantAddress) {
-        this.tenantAddress = tenantAddress;
+    public void setLandlordAddress(String landlordAddress) {
+        this.landlordAddress = landlordAddress;
     }
 
-    public String getTenantCellPhone() {
-        return tenantCellPhone;
+    public String getLandlordCellPhone() {
+        return landlordCellPhone;
     }
 
-    public void setTenantCellPhone(String tenantCellPhone) {
-        this.tenantCellPhone = tenantCellPhone;
+    public void setLandlordCellPhone(String landlordCellPhone) {
+        this.landlordCellPhone = landlordCellPhone;
     }
 
-    public String getTenantIDNo() {
-        return tenantIDNo;
+    public String getLandlordIDNo() {
+        return landlordIDNo;
     }
 
-    public void setTenantIDNo(String tenantIDNo) {
-        this.tenantIDNo = tenantIDNo;
+    public void setLandlordIDNo(String landlordIDNo) {
+        this.landlordIDNo = landlordIDNo;
     }
 
     public String getEffectiveDate() {
@@ -115,13 +141,5 @@ public class TenancyAgreementModel {
 
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
-    }
-
-    public String getRent() {
-        return rent;
-    }
-
-    public void setRent(String rent) {
-        this.rent = rent;
     }
 }

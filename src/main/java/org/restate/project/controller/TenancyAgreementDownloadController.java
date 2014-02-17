@@ -17,7 +17,6 @@ package org.restate.project.controller;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.docx4j.openpackaging.contenttype.ContentType;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.restate.project.model.TenancyAgreement;
 import org.restate.project.model.Tenant;

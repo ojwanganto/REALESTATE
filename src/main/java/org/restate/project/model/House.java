@@ -8,6 +8,8 @@ public class House extends BaseObject {
     private String description;
     private Estate estate;
     private Landlord landlord;
+    private String plotNo;
+
 
     //default constructor
     public House(){
@@ -22,6 +24,13 @@ public class House extends BaseObject {
 
     }
 
+    public String getPlotNo() {
+        return plotNo;
+    }
+
+    public void setPlotNo(String plotNo) {
+        this.plotNo = plotNo;
+    }
 
     public String getDescription() {
         return description;

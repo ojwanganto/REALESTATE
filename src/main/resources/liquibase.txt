@@ -95,6 +95,7 @@ CREATE TABLE `house` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
+  `plot_number` varchar(20) DEFAULT NULL,
   `estate` int(10) DEFAULT NULL,
   `landlord` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -134,6 +135,39 @@ CREATE TABLE `tenancy_agreement` (
   FOREIGN KEY(unit) references unit(id)
 
 ) ;
+
+
+CREATE TABLE `landlord_agreement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ref` varchar(25) DEFAULT NULL,
+  `landlord` int(10) DEFAULT NULL,
+  `house` int(10) DEFAULT NULL,
+  `effective_date` date DEFAULT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `rent_submission_date` date DEFAULT NULL,
+  `rent_collection_date` date DEFAULT NULL,
+  `commission` decimal(10,2) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(house) references house(id),
+  FOREIGN KEY(landlord) references landlord(id)
+
+) ;
+
+
+CREATE TABLE `agent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `contact_person` varchar(50) DEFAULT NULL,
+  `bank_account` varchar(50) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone_contact` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+
+) ;
+
+
+
 
 
 

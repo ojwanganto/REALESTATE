@@ -6,6 +6,7 @@
         <li><a href="manageCounty.aspx">County Management</a></li>
         <li><a href="manageCountry.aspx">Country Management</a></li>
         <li><a href="">User Management</a></li>
+        <li><a href="agent.form">Agent Info</a></li>
 
     </ul>
     <br/>
