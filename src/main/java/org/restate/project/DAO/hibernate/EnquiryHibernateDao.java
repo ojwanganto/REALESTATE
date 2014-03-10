@@ -26,7 +26,6 @@ public class EnquiryHibernateDao implements EnquiryDAO {
     @Override
     public Enquiry saveEnquiry(Enquiry enquiry) {
         sessionfactory.getCurrentSession().saveOrUpdate(enquiry);
-        log.info("Enquiry saved successfully");
         return enquiry;
     }
 
@@ -34,7 +33,6 @@ public class EnquiryHibernateDao implements EnquiryDAO {
     @Override
     public List<Enquiry> getEnquiryList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Enquiry.class);
-        log.info("Got this number of Enquiries "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

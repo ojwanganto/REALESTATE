@@ -2,6 +2,7 @@ package org.restate.project.reports;
 
 import org.restate.project.model.Agent;
 import org.restate.project.service.AgentService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -10,16 +11,12 @@ import java.util.Date;
  */
 public class TenancyAgreementModel {
 
-    private AgentService agentService;
-
-    /*Fetch agent particulars */
-    Agent agent = agentService.getAgent();
-
-
     private String currentDate;
-    private String agentName = agent.getName();
-    private String agentAddress = agent.getAddress();
-    private String agentCellPhone = agent.getPhoneContact();
+
+    private String agentName;
+    private String agentAddress;
+    private String agentCellPhone;
+
     private String houseName;
     private String tenantName;
     private String tenantAddress;

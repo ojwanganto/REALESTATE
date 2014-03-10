@@ -18,9 +18,11 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import org.restate.project.model.Agent;
 import org.restate.project.model.Landlord;
 import org.restate.project.model.LandlordAgreement;
 import org.restate.project.reports.LandlordAgreementModel;
+import org.restate.project.service.AgentService;
 import org.restate.project.service.LandlordAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,11 +41,13 @@ import java.util.Date;
 @RequestMapping("landlordAgreementDownload.aspx")
 public class LandlordAgreementDownloadController {
 
-    private static final String SUCCESS_VIEW = "redirect:landlordAgreement.list";
     private Log log = LogFactory.getLog(this.getClass());
 
     @Autowired
     private LandlordAgreementService landlordAgreementService;
+
+    @Autowired
+    private AgentService agentService;
 
     @RequestMapping(method = RequestMethod.GET, value = "landlordAgreementDownload.aspx")
     public void downloadDocument(HttpServletResponse response,
@@ -62,9 +66,9 @@ public class LandlordAgreementDownloadController {
         Landlord thisLandlord = thisAgreement.getLandlord();
 
        /*Populate agent details*/
-        model.getAgentAddress();
-        model.getAgentCellPhone();
-        model.getAgentName();
+        model.setAgentAddress(this.getAgent().getAddress());
+        model.setAgentCellPhone(this.getAgent().getPhoneContact());
+        model.setAgentName(this.getAgent().getName());
 
         /*populate tenant relevant details*/
 
@@ -189,5 +193,8 @@ public class LandlordAgreementDownloadController {
         tmpFile.delete();
     }
 
+    private Agent getAgent(){
+        return agentService.getAgent();
+    }
 
 }

@@ -26,7 +26,6 @@ public class LandlordAgreementHibernateDao implements LandlordAgreementDAO {
     @Override
     public LandlordAgreement saveLandlordAgreement(LandlordAgreement landlordAgreement) {
         sessionfactory.getCurrentSession().saveOrUpdate(landlordAgreement);
-        log.info("LandlordAgreement saved successfully");
         return landlordAgreement;
     }
 
@@ -46,7 +45,6 @@ public class LandlordAgreementHibernateDao implements LandlordAgreementDAO {
     @Override
     public List<LandlordAgreement> getLandlordAgreementList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(LandlordAgreement.class);
-        log.info("Got this number of Landlord Agreements "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

@@ -42,7 +42,6 @@ public class LandlordHibernateDao implements LandlordDAO {
         landlord.setPersonId(savedP);
         landlord.setDateCreated(new Date());
         sessionfactory.getCurrentSession().saveOrUpdate(landlord);
-        log.info("Landlord saved successfully");
         return landlord;
     }
 
@@ -56,7 +55,6 @@ public class LandlordHibernateDao implements LandlordDAO {
     @Override
     public List<Landlord> getLandlordList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Landlord.class);
-        log.info("Got this number of Landlords "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

@@ -1,23 +1,14 @@
 package org.restate.project.reports;
 
-import org.restate.project.model.Agent;
-import org.restate.project.service.AgentService;
-
 /**
  * A model for Landlord Agreement document
  */
 public class LandlordAgreementModel {
 
-    private AgentService agentService;
-
-    /*Fetch agent particulars */
-    Agent agent = agentService.getAgent();
-
-
     private String currentDate;
-    private String agentName = agent.getName();
-    private String agentAddress = agent.getAddress();
-    private String agentCellPhone = agent.getPhoneContact();
+    private String agentName;
+    private String agentAddress;
+    private String agentCellPhone;
 
 
     private String houseName;

@@ -40,7 +40,7 @@ public class TenancyAgreementHibernateDao implements TenancyAgreementDAO {
     @Override
     public List<TenancyAgreement> getTenancyAgreementList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(TenancyAgreement.class);
-        log.info("Got this number of Tenancy Agreements "+ criteria.list().size());
+
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

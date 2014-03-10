@@ -26,7 +26,6 @@ public class HouseHibernateDao implements HouseDAO {
     @Override
     public House saveHouse(House House) {
         sessionfactory.getCurrentSession().saveOrUpdate(House);
-        log.info("House saved successfully");
         return House;
     }
 
@@ -40,7 +39,6 @@ public class HouseHibernateDao implements HouseDAO {
     @Override
     public List<House> getHouseList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(House.class);
-        log.info("Got this number of Houses "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

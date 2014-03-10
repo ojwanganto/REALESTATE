@@ -40,7 +40,7 @@ public class UnitHibernateDao implements UnitDAO {
     @Override
     public List<Unit> getUnitList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Unit.class);
-        log.info("Got this number of Units "+ criteria.list().size());
+        /*log.info("Got this number of Units "+ criteria.list().size());*/
         criteria.addOrder(Order.asc("name"));
         return criteria.list();
     }

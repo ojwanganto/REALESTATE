@@ -26,7 +26,6 @@ public class CountryHibernateDao implements CountryDAO {
     @Override
     public Country saveCountry(Country country) {
         sessionfactory.getCurrentSession().saveOrUpdate(country);
-        log.info("Country saved successfully");
         return country;
     }
 
@@ -40,7 +39,6 @@ public class CountryHibernateDao implements CountryDAO {
     @Override
     public List<Country> getCountryList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Country.class);
-        log.info("Got this number of Countries "+ criteria.list().size());
         criteria.addOrder(Order.asc("code"));
         return criteria.list();
     }

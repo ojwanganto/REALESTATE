@@ -9,6 +9,9 @@ import org.docx4j.wml.Style;
 import org.docx4j.wml.Styles;
 import org.docx4j.wml.U;
 import org.docx4j.wml.UnderlineEnumeration;
+import org.restate.project.model.Agent;
+import org.restate.project.service.AgentService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -23,6 +26,7 @@ import java.util.List;
 public class REALUtils {
 
         private static WordprocessingMLPackage wordMLPackage;
+
 
         /**
          *  First we create the package, then we alter the style sheet and add some
@@ -58,7 +62,7 @@ public class REALUtils {
          *  We check against all styles we want to alter and apply the alterations if
          *  applicable.
          *
-         *  @param wordMLPackage
+         *  @param /wordMLPackage
          */
         public static void alterStyleSheet() {
             StyleDefinitionsPart styleDefinitionsPart =
@@ -175,5 +179,6 @@ public class REALUtils {
             underline.setVal(UnderlineEnumeration.SINGLE);
             runProperties.setU(underline );
         }
+
 
 }

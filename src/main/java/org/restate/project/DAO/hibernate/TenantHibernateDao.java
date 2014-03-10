@@ -58,7 +58,7 @@ public class TenantHibernateDao implements TenantDAO {
     @Override
     public List<Tenant> getTenantList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Tenant.class);
-        log.info("Got this number of Tenants "+ criteria.list().size());
+        /*log.info("Got this number of Tenants "+ criteria.list().size());*/
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

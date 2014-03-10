@@ -40,7 +40,7 @@ public class TownHibernateDao implements TownDAO {
     @Override
     public List<Town> getTownList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Town.class);
-        log.info("Got this number of Towns "+ criteria.list().size());
+        /*log.info("Got this number of Towns "+ criteria.list().size());*/
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

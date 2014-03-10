@@ -26,7 +26,6 @@ public class CountyHibernateDao implements CountyDAO {
     @Override
     public County saveCounty(County county) {
         sessionfactory.getCurrentSession().saveOrUpdate(county);
-        log.info("County saved successfully");
         return county;
     }
 
@@ -40,7 +39,6 @@ public class CountyHibernateDao implements CountyDAO {
     @Override
     public List<County> getCountyList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(County.class);
-        log.info("Got this number of Counties "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

@@ -26,7 +26,6 @@ public class EstateHibernateDao implements EstateDAO {
     @Override
     public Estate saveEstate(Estate estate) {
         sessionfactory.getCurrentSession().saveOrUpdate(estate);
-        log.info("Estate saved successfully");
         return estate;
     }
 
@@ -46,7 +45,6 @@ public class EstateHibernateDao implements EstateDAO {
     @Override
     public List<Estate> getEstateList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Estate.class);
-        log.info("Got this number of Estates "+ criteria.list().size());
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }

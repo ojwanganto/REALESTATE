@@ -35,7 +35,6 @@ public class PersonHibernateDaoImpl implements PersonDAO {
     @Transactional
     @Override
     public Person getPersonById(Integer pid) {
-        log.info("Trying to get  number of persons ");
         return (Person)sessionfactory.getCurrentSession().get(Person.class,pid);
     }
 
@@ -43,7 +42,6 @@ public class PersonHibernateDaoImpl implements PersonDAO {
     @Override
     public List<Person> getPersonsList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Person.class);
-         log.info("Got this number of persons "+ criteria.list().size());
         criteria.addOrder(Order.asc("name"));
         return criteria.list();
     }

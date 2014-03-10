@@ -29,16 +29,17 @@ public class AgentHibernateDao implements AgentDAO {
     @Override
     public Agent saveAgent(Agent agent) {
         sessionfactory.getCurrentSession().saveOrUpdate(agent);
-        log.info("Agent saved successfully");
+
         return agent;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Agent getAgent() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Agent.class);
+        return (Agent) criteria.setMaxResults(1).list().get(0);
 
-        return (Agent)criteria.list().get(0);
+
     }
 
 }
