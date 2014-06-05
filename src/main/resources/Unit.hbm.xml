@@ -15,7 +15,7 @@
         <property name="description" column="description" type="string"/>
         <property name="category" column="category" type="integer"/>
         <property name="categoryType" column="category_type" type="integer"/>
-        <many-to-one name="house" lazy="false" cascade="persist" class="org.restate.project.model.House" not-null="true" column="house"/>
+        <many-to-one name="house" lazy="false"  class="org.restate.project.model.House" not-null="true" column="house"/>
 
     </class>
 </hibernate-mapping>

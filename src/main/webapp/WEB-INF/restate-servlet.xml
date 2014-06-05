@@ -61,6 +61,9 @@
     <bean id="enquiry" class="org.restate.project.model.Enquiry"></bean>
     <bean id="person" class="org.restate.project.model.Person"></bean>
     <bean id="agent" class="org.restate.project.model.Agent"></bean>
+    <bean id="paymentType" class="org.restate.project.model.PaymentType"></bean>
+    <bean id="payment" class="org.restate.project.model.Payment"></bean>
+
 
 
     <bean id="personDAO" class="org.restate.project.DAO.hibernate.PersonHibernateDaoImpl"></bean>
@@ -101,6 +104,12 @@
 
     <bean id="agentDAO" class="org.restate.project.DAO.hibernate.AgentHibernateDao"></bean>
     <bean id="agentService" class="org.restate.project.service.impl.AgentServiceImpl"></bean>
+
+    <bean id="paymentTypeDAO" class="org.restate.project.DAO.hibernate.PaymentTypeHibernateDao"></bean>
+    <bean id="paymentTypeService" class="org.restate.project.service.impl.PaymentTypeServiceImpl"></bean>
+
+    <bean id="paymentDAO" class="org.restate.project.DAO.hibernate.PaymentHibernateDao"></bean>
+    <bean id="paymentService" class="org.restate.project.service.impl.PaymentServiceImpl"></bean>
 
 
 

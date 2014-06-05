@@ -4,9 +4,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.restate.project.DAO.EstateDAO;
+import org.restate.project.model.County;
 import org.restate.project.model.Estate;
+import org.restate.project.model.Town;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,4 +53,18 @@ public class EstateHibernateDao implements EstateDAO {
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
     }
+
+    @Override
+    public List<Estate> getEstateByTown(Town town) {
+        Criteria c = sessionfactory.getCurrentSession().createCriteria(Estate.class)
+                .add(Restrictions.eq("town", town));
+                //.setProjection(Projections.property("facility"));
+
+        return c.list();
+    }
+    /*Criteria c = sessionFactory.getCurrentSession().createCriteria(UserFacility.class)
+            .add(Restrictions.eq("user", user))
+            .setProjection(Projections.property("facility"));
+
+    return c.list();*/
 }

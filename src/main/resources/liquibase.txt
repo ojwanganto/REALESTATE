@@ -166,6 +166,32 @@ CREATE TABLE `agent` (
 
 ) ;
 
+CREATE TABLE `payment_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+
+) ;
+
+INSERT INTO `payment_type`(id,name)
+    VALUES ('1','House Rent'),
+           ('2','Rent Deposit'),
+           ('3','Late rent Penalty');
+
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tenant` int(10) DEFAULT NULL,
+  `payment_type` int(10) DEFAULT NULL,
+  `unit` int(10) DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  `effective_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(tenant) references tenant(id),
+  FOREIGN KEY(payment_type) references payment_type(id),
+  FOREIGN KEY(unit) references unit(id)
+
+) ;
+
 
 
 

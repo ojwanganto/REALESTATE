@@ -18,10 +18,6 @@
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.connection.current_session_context_class">thread</property>
 
-
-
-
-
         <mapping class="org.restate.project.model.Person" />
 
         <!-- List of XML mapping files -->
@@ -37,6 +33,8 @@
         <mapping resource="Town.hbm.xml"></mapping>
         <mapping resource="Unit.hbm.xml"></mapping>
         <mapping resource="Agent.hbm.xml"></mapping>
+        <mapping resource="PaymentType.hbm.xml"></mapping>
+        <mapping resource="Payment.hbm.xml"></mapping>
 
     </session-factory>
 </hibernate-configuration>

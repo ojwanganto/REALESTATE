@@ -3,8 +3,8 @@
 <html>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
-<%@ include file="/WEB-INF/template/local_headers/tenant_header.jsp" %>
-<%@ include file="/WEB-INF/template/local_headers/mini_headers/tenant_mini_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/accounts_header.jsp" %>
+<%@ include file="/WEB-INF/template/local_headers/mini_headers/in_payments_mini_header.jsp" %>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-1.10.2.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui-1.10.4.custom.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/navBar.css'/>">
@@ -14,8 +14,8 @@
     $(document).ready(function(){
 
     $(function() {
-        $("#from").datepicker();
-        $("#to").datepicker();
+        $("#effectiveDate").datepicker();
+
     });
 
     $('#estateList').change(function() {
@@ -45,10 +45,11 @@
 
     $('#houseList').change(function() {
         var houseId = $('#houseList').val().trim();
+        var tenantId = $('#tenant').val().trim();
         if(houseId == null)
             return false;
 
-        $.getJSON('${pageContext.request.contextPath}/ajaxCalls/unitList/' + houseId, function(unitList) {
+        $.getJSON('${pageContext.request.contextPath}/ajaxCalls/unitList/' + houseId + '/' + tenantId, function(unitList) {
             var inputString = '<select id="unitList"> ';
             $.each(unitList, function(){
                 inputString = inputString + '<option value="' + this['id'] + '" > ' + this['name'] + '</option>';
@@ -66,15 +67,15 @@
 </script>
 <body>
 <br>
-<c:if test="${not empty tenancyAgreement.id}">
-    <h3>Edit Tenancy Agreement</h3>
+<c:if test="${not empty payment.id}">
+    <h3>Edit Rent Deposit </h3>
 </c:if>
 
-<c:if test="${empty tenancyAgreement.id}">
-    <h3>Add Tenancy Agreement</h3>
+<c:if test="${empty payment.id}">
+    <h3>Add Rent Deposit</h3>
 </c:if>
 
-<spring:hasBindErrors name="tenancyAgreement">
+<spring:hasBindErrors name="payment">
     Please fix the errors below
     <br />
 </spring:hasBindErrors>
@@ -85,8 +86,8 @@
                 <td>Tenant</td>
                 <td valign="top">
 
-                    <spring:bind path="tenancyAgreement.tenant.id">
-                        <select name="${status.expression}">
+                    <spring:bind path="payment.tenant.id">
+                        <select name="${status.expression}" id="tenant">
                             <option>Select Tenant</option>
                             <c:forEach var="tenant" items="${tenants}">
                                 <option
@@ -148,7 +149,7 @@
                 <td>Unit</td>
                 <td valign="top">
 
-                    <spring:bind path="tenancyAgreement.unit.id">
+                    <spring:bind path="payment.unit.id">
                         <select name="${status.expression}" id="unitList">
                             <option>Select Unit</option>
                         </select>
@@ -159,41 +160,25 @@
             <tr>
                 <td>Rent Payable (Ksh.)</td>
                 <td valign="top">
-                    <spring:bind path="tenancyAgreement.rentPayable">
-                        <input type="text" name="${status.expression}" value="${status.value}" size="20" />
-                        <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
-                    </spring:bind>
-                </td>
-            </tr>
-            <tr>
-                <td>Deposit (Ksh.)</td>
-                <td valign="top">
-                    <spring:bind path="tenancyAgreement.deposit">
+                    <spring:bind path="payment.amount">
                         <input type="text" name="${status.expression}" value="${status.value}" size="20" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>
             </tr>
 
+
             <tr>
-                <td>From</td>
+                <td>Effective Date</td>
                 <td valign="top">
-                    <spring:bind path="tenancyAgreement.startDate">
-                        <input type="text" name="${status.expression}" id="from" value="${status.value}" size="25" />
+                    <spring:bind path="payment.effectiveDate">
+                        <input type="text" name="${status.expression}" id="effectiveDate" value="${status.value}" size="25" />
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>
                 </td>
             </tr>
 
-            <tr>
-                <td>Expiry</td>
-                <td valign="top">
-                    <spring:bind path="tenancyAgreement.expiry">
-                        <input type="text" name="${status.expression}" id="to" value="${status.value}" size="25" />
-                        <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
-                    </spring:bind>
-                </td>
-            </tr>
+
 
         </table>
         <br />

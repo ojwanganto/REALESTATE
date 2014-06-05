@@ -3,6 +3,8 @@ package org.restate.project.service.impl;
 import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.UnitDAO;
 import org.restate.project.model.Country;
+import org.restate.project.model.House;
+import org.restate.project.model.Tenant;
 import org.restate.project.model.Unit;
 import org.restate.project.service.CountryService;
 import org.restate.project.service.UnitService;
@@ -37,4 +39,10 @@ public class UnitServiceImpl implements UnitService {
     public List<Unit> getUnitList() {
         return unitDAO.getUnitList();
     }
+
+    @Override
+    public List<Unit> getUnitByHouse(House house) {
+        return unitDAO.getUnitByHouse(house);
+    }
+
 }
