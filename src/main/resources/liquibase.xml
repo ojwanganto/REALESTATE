@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="db-country" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="country"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the country table
+        </comment>
+        <createTable tableName="country">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+            <column name="code" type="varchar(10)"/>
+        </createTable>
+
+        <createIndex tableName="country" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-person" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="person"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the country table
+        </comment>
+        <createTable tableName="person">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(45)"/>
+            <column name="middle_name" type="varchar(45)"/>
+            <column name="last_name" type="varchar(45)"/>
+            <column name="gender" type="varchar(10)"/>
+            <column name="dob" type="datetime"/>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+        <createIndex tableName="person" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-county" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="county"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the county table
+        </comment>
+        <createTable tableName="county">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="code" type="varchar(10)"/>
+            <column name="country" type="int"/>
+        </createTable>
+
+        <createIndex tableName="county" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-county-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="county" columnName="country"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="country_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding country fk on county table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="country_ref"
+                baseTableName="county"
+                baseColumnNames="country"
+                referencedTableName="country"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-landlord" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landlord"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the landlord table
+        </comment>
+        <createTable tableName="landlord">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(45)"/>
+            <column name="middle_name" type="varchar(45)"/>
+            <column name="last_name" type="varchar(45)"/>
+            <column name="person_id" type="int"/>
+            <column name="dob" type="datetime"/>
+            <column name="identifier" type="varchar(15)"/>
+            <column name="gender" type="varchar(5)"/>
+            <column name="nationality" type="int"/>
+            <column name="mobile_no" type="varchar(15)"/>
+            <column name="address" type="varchar(25)"/>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+        <createIndex tableName="landlord" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-landlord-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="landlord" columnName="nationality"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="landlord_nationality_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding nationality fk on landlord table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="landlord_nationality_ref"
+                baseTableName="landlord"
+                baseColumnNames="nationality"
+                referencedTableName="country"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-tenant" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tenant"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the tenant table
+        </comment>
+        <createTable tableName="tenant">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(45)"/>
+            <column name="middle_name" type="varchar(45)"/>
+            <column name="last_name" type="varchar(45)"/>
+            <column name="person_id" type="int"/>
+            <column name="dob" type="datetime"/>
+            <column name="identifier" type="varchar(15)"/>
+            <column name="gender" type="varchar(5)"/>
+            <column name="nationality" type="int"/>
+            <column name="mobile_no" type="varchar(15)"/>
+            <column name="occupation" type="varchar(15)"/>
+            <column name="marital_status" type="varchar(15)"/>
+            <column name="address" type="varchar(25)"/>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+        <createIndex tableName="tenant" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-tenant-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="tenant" columnName="nationality"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="tenant_nationality_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding nationality fk on tenant table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="tenant_nationality_ref"
+                baseTableName="tenant"
+                baseColumnNames="nationality"
+                referencedTableName="country"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-town" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="town"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the town table
+        </comment>
+        <createTable tableName="town">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="county" type="int"/>
+        </createTable>
+
+        <createIndex tableName="town" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-town-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="town" columnName="county"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="county_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding county fk on town table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="county_ref"
+                baseTableName="town"
+                baseColumnNames="county"
+                referencedTableName="county"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-estate" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="estate"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the estate table
+        </comment>
+        <createTable tableName="estate">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="description" type="varchar(100)"/>
+            <column name="town" type="int"/>
+        </createTable>
+
+        <createIndex tableName="estate" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-town-estate-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="estate" columnName="town"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="town_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding town fk on estate table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="town_ref"
+                baseTableName="estate"
+                baseColumnNames="town"
+                referencedTableName="town"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-house" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="house"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the house table
+        </comment>
+        <createTable tableName="house">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="description" type="varchar(100)"/>
+            <column name="plot_number" type="varchar(20)"/>
+            <column name="estate" type="int"/>
+            <column name="landlord" type="int"/>
+        </createTable>
+
+        <createIndex tableName="house" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-house-estate-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="house" columnName="estate"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="house_estate_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding estate fk on house table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="house_estate_ref"
+                baseTableName="house"
+                baseColumnNames="estate"
+                referencedTableName="estate"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-house-landlord-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="house" columnName="landlord"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="house_landlord_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding landlord fk on house table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="house_landlord_ref"
+                baseTableName="house"
+                baseColumnNames="landlord"
+                referencedTableName="landlord"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-unit" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="unit"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the unit table
+        </comment>
+        <createTable tableName="unit">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="description" type="varchar(100)"/>
+            <column name="category" type="int"/>
+            <column name="category_type" type="int"/>
+            <column name="house" type="int"/>
+        </createTable>
+
+        <createIndex tableName="unit" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-unit-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="unit" columnName="house"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="unit_house_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding house fk on unit table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="unit_house_ref"
+                baseTableName="unit"
+                baseColumnNames="house"
+                referencedTableName="house"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-tenancy_agreement" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tenancy_agreement"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the tenancy_agreement table
+        </comment>
+        <createTable tableName="tenancy_agreement">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ref" type="varchar(25)"/>
+            <column name="tenant" type="varchar(100)"/>
+            <column name="landlord" type="int"/>
+            <column name="unit" type="int"/>
+            <column name="house" type="int"/>
+            <column name="start_date" type="datetime"/>
+            <column name="expiry" type="datetime"/>
+            <column name="rent" type="decimal(10,2)"/>
+            <column name="date_created" type="datetime"/>
+            <column name="deposit" type="decimal(10,2)"/>
+        </createTable>
+
+        <createIndex tableName="unit" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-tenancy-agreement-tenant-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="tenancy_agreement" columnName="tenant"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_tenant_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding tenant fk on tenancy_agreement table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="tenancy_agreement_tenant_ref"
+                baseTableName="tenancy_agreement"
+                baseColumnNames="tenant"
+                referencedTableName="tenant"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-tenancy-agreement-landlord-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="tenancy_agreement" columnName="landlord"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_landlord_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding tenant fk on tenancy_agreement table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="tenancy_agreement_landlord_ref"
+                baseTableName="tenancy_agreement"
+                baseColumnNames="landlord"
+                referencedTableName="landlord"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-tenancy-agreement-unit-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="tenancy_agreement" columnName="unit"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_unit_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding tenant fk on tenancy_agreement table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="tenancy_agreement_unit_ref"
+                baseTableName="tenancy_agreement"
+                baseColumnNames="unit"
+                referencedTableName="unit"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-landlord_agreement" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landlord_agreement"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the landlord_agreement table
+        </comment>
+        <createTable tableName="landlord_agreement">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ref" type="varchar(25)"/>
+            <column name="landlord" type="int"/>
+            <column name="house" type="int"/>
+            <column name="effective_date" type="datetime"/>
+            <column name="expiry_date" type="datetime"/>
+            <column name="rent_submission_date" type="datetime"/>
+            <column name="rent_collection_date" type="datetime"/>
+            <column name="commission" type="decimal(10,2)"/>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+        <createIndex tableName="landlord_agreement" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="db-landlord-agreement-landlord-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="landlord_agreement" columnName="landlord"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="landlord_agreement_landlord_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding landlord fk on landlord_agreement table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="landlord_agreement_landlord_ref"
+                baseTableName="landlord_agreement"
+                baseColumnNames="landlord"
+                referencedTableName="landlord"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-landlord-agreement-house-fk" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="landlord_agreement" columnName="house"/>
+                <not>
+                    <foreignKeyConstraintExists foreignKeyName="landlord_agreement_house_ref"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Adding house fk on landlord_agreement table
+        </comment>
+        <addForeignKeyConstraint
+                constraintName="landlord_agreement_house_ref"
+                baseTableName="tenancy_agreement"
+                baseColumnNames="house"
+                referencedTableName="house"
+                referencedColumnNames="id"
+                />
+    </changeSet>
+
+    <changeSet id="db-agent" author="aojwang">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="agent"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the agent table
+        </comment>
+        <createTable tableName="agent">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)"/>
+            <column name="contact_person" type="varchar(50)"/>
+            <column name="bank_account" type="varchar(50)"/>
+            <column name="address" type="varchar(100)"/>
+            <column name="phone_contact" type="varchar(30)"/>
+        </createTable>
+
+        <createIndex tableName="agent_index" indexName="id">
+            <column name="id" />
+        </createIndex>
+
+    </changeSet>
+
+
+</databaseChangeLog>

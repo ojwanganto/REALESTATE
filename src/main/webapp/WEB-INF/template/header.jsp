@@ -8,4 +8,5 @@
 
         <li><a href="admin.asp">Admin</a></li>
     </ul>
+    <div align="right" style="font-family: Tahoma; font-size: 20; padding: 10px 10px 15px"><a href="<c:url value="/j_spring_security_logout" />">Logout</a></div>
 </nav>

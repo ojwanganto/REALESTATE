@@ -3,13 +3,16 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
 
 
     <context:component-scan base-package="org.restate.project"/>
@@ -47,6 +50,21 @@
             </props>
         </property>
     </bean>
+    <security:http>
+       <!-- <security:intercept-url pattern='/home*' access='ROLE_USER,ROLE_ADMIN'/>-->
+        <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <security:form-login />
+        <security:logout />
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="anto" password="antoanto" authorities="ROLE_USER, ROLE_ADMIN" />
+                <security:user name="sam" password="samsam" authorities="ROLE_USER" />
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
 
     <bean id="country" class="org.restate.project.model.Country"></bean>
     <bean id="county" class="org.restate.project.model.County"></bean>
