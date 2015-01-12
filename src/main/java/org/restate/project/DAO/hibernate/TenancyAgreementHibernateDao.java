@@ -5,11 +5,16 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.restate.project.DAO.TenancyAgreementDAO;
+import org.restate.project.model.House;
 import org.restate.project.model.TenancyAgreement;
+import org.restate.project.model.Tenant;
+import org.restate.project.model.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +48,23 @@ public class TenancyAgreementHibernateDao implements TenancyAgreementDAO {
 
         criteria.addOrder(Order.asc("id"));
         return criteria.list();
+    }
+
+    @Transactional
+    @Override
+    public List<Unit> getUnitsOfATenantByHouse(Tenant tenant, House house) {
+        Criteria criteria = sessionfactory.getCurrentSession().createCriteria(TenancyAgreement.class)
+                .add(Restrictions.eq("tenant",tenant))
+                .add(Restrictions.eq("house",house));
+
+        List<TenancyAgreement> tenancyAgreements = criteria.list();
+        List<Unit> houseUnits = new ArrayList<Unit>();
+
+        for(TenancyAgreement tenancyAgreement:tenancyAgreements){
+              houseUnits.add(tenancyAgreement.getUnit());
+        }
+        return houseUnits;
+
     }
 
     @Transactional

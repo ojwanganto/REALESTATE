@@ -18,7 +18,7 @@
         <property name="nationalIdNo" column="identifier" type="string"/>
         <property name="gender" column="gender" type="string"/>
         <many-to-one name="nationality" lazy="false" cascade="persist" class="org.restate.project.model.Country" not-null="true" column="nationality"/>
-        <many-to-one name="personId" cascade="delete" class="org.restate.project.model.Person" unique="true" column="person_id" />
+        <many-to-one name="personId" cascade="delete" lazy="false" class="org.restate.project.model.Person" unique="true" column="person_id" />
         <property name="phoneNumber" column="mobile_no" type="string"/>
         <property name="address" column="address" type="string"/>
         <property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />

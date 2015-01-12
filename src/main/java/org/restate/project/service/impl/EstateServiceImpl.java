@@ -1,10 +1,8 @@
 package org.restate.project.service.impl;
 
-import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.EstateDAO;
-import org.restate.project.model.Country;
 import org.restate.project.model.Estate;
-import org.restate.project.service.CountryService;
+import org.restate.project.model.Town;
 import org.restate.project.service.EstateService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,5 +35,10 @@ public class EstateServiceImpl implements EstateService {
     @Override
     public List<Estate> getEstateList() {
         return estateDAO.getEstateList();
+    }
+
+    @Override
+    public List<Estate> getEstateByTown(Town town) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

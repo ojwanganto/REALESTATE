@@ -11,12 +11,58 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/ui-lightness/jquery-ui-1.10.4.custom.min.css'/>">
 
 <script type="text/javascript">
+    $(document).ready(function(){
 
     $(function() {
         $("#from").datepicker();
         $("#to").datepicker();
     });
 
+    $('#estateList').change(function() {
+        var estateId = $('#estateList').val().trim();
+        if(estateId == null)
+            return false;
+
+        var eId = $.trim(estateId);
+
+        $.getJSON('${pageContext.request.contextPath}/ajaxCalls/houseList/' + estateId, function(houseList) {
+            var inputString = '<select id="houseList"> <option>Select House</option>';
+            $.each(houseList, function(){
+                inputString = inputString + '<option value="' + this['id'] + '" > ' + this['name'] + '</option>';
+                //console.log(this['id'] + " -->" + this['name']);
+            });
+
+            inputString = inputString + "</select>";
+            $("#houseList").html(inputString);
+           // console.log(inputString);
+
+        });
+    });
+
+    /**
+     * Handle on change event of house list
+     */
+
+    $('#houseList').change(function() {
+        var houseId = $('#houseList').val().trim();
+        if(houseId == null)
+            return false;
+
+        $.getJSON('${pageContext.request.contextPath}/ajaxCalls/unitList/' + houseId, function(unitList) {
+            var inputString = '<select id="unitList"> ';
+            $.each(unitList, function(){
+                inputString = inputString + '<option value="' + this['id'] + '" > ' + this['name'] + '</option>';
+
+            });
+
+            inputString = inputString + "</select>";
+            $("#unitList").html(inputString);
+           // console.log(inputString);
+
+        });
+    });
+
+    });
 </script>
 <body>
 <br>
@@ -41,6 +87,7 @@
 
                     <spring:bind path="tenancyAgreement.tenant.id">
                         <select name="${status.expression}">
+                            <option>Select Tenant</option>
                             <c:forEach var="tenant" items="${tenants}">
                                 <option
                                         <c:if test="${status.value==tenant.id}">selected</c:if> value="
@@ -58,6 +105,7 @@
 
 
                         <select id="countyList">
+                            <option>Select County</option>
                             <c:forEach var="county" items="${counties}">
                                 <option
                                         <c:if test="${status.value==county.id}">selected</c:if> value="
@@ -74,6 +122,7 @@
                 <td valign="top">
 
                         <select id="estateList">
+                            <option>Select Estate</option>
                             <c:forEach var="estate" items="${estates}">
                                 <option
                                         <c:if test="${status.value==estate.id}">selected</c:if> value="
@@ -89,11 +138,7 @@
                 <td valign="top">
 
                         <select id="houseList">
-                            <c:forEach var="house" items="${houses}">
-                                <option
-                                        <c:if test="${status.value==house.id}">selected</c:if> value="
-                                        ${house.id}">${house.name} </option>
-                            </c:forEach>
+                            <option>Select House</option>
                         </select>
 
                 </td>
@@ -105,11 +150,7 @@
 
                     <spring:bind path="tenancyAgreement.unit.id">
                         <select name="${status.expression}" id="unitList">
-                            <c:forEach var="unit" items="${units}">
-                                <option
-                                        <c:if test="${status.value==unit.id}">selected</c:if> value="
-                                        ${unit.id}">${unit.name} </option>
-                            </c:forEach>
+                            <option>Select Unit</option>
                         </select>
                         <c:if test="${status.errorMessage != ''}"><c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if></c:if>
                     </spring:bind>

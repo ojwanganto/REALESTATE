@@ -1,5 +1,7 @@
 package org.restate.project.model;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 /**
  * A class that contains information about a house/block in an estate
  */
