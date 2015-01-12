@@ -8,6 +8,8 @@ import org.restate.project.service.AgentService;
 import org.restate.project.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * implementation class for AgentService class
  */
@@ -26,5 +28,8 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentDAO.getPaymentById(id);
     }
 
-
+    @Override
+    public List<Payment> getPaymentList() {
+        return paymentDAO.getPaymentList();
+    }
 }

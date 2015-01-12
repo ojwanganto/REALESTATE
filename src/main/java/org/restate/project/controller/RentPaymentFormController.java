@@ -61,7 +61,7 @@ public class RentPaymentFormController {
 
     private static final String LIST_VIEW = "rentDepositList";
     private static final String FORM_VIEW = "rentPaymentForm";
-    private static final String SUCCESS_VIEW = "redirect:landlord.list";
+    private static final String SUCCESS_VIEW = "redirect:payments.list";
 
     private final Log log = LogFactory.getLog(this.getClass());
 
