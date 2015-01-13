@@ -23,9 +23,9 @@
             <column name="code" type="varchar(10)"/>
         </createTable>
 
-        <createIndex tableName="country" indexName="id">
+        <!--<createIndex tableName="country-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
@@ -50,9 +50,9 @@
             <column name="date_created" type="datetime"/>
         </createTable>
 
-        <createIndex tableName="person" indexName="id">
+        <!--<createIndex tableName="person-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
@@ -74,21 +74,19 @@
             <column name="country" type="int"/>
         </createTable>
 
-        <createIndex tableName="county" indexName="id">
+        <!--<createIndex tableName="county-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-county-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
-            <and>
-                <columnExists tableName="county" columnName="country"/>
-                <not>
-                    <foreignKeyConstraintExists foreignKeyName="country_ref"/>
-                </not>
-            </and>
-        </preConditions>
+<!--        <preConditions onFail="MARK_RAN">
+            <not>
+                 <foreignKeyConstraintExists foreignKeyName="country_ref"/>
+            </not>
+
+        </preConditions>-->
         <comment>
             Adding country fk on county table
         </comment>
@@ -127,21 +125,21 @@
             <column name="date_created" type="datetime"/>
         </createTable>
 
-        <createIndex tableName="landlord" indexName="id">
+        <!--<createIndex tableName="landlord-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-landlord-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="landlord" columnName="nationality"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="landlord_nationality_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding nationality fk on landlord table
         </comment>
@@ -182,21 +180,21 @@
             <column name="date_created" type="datetime"/>
         </createTable>
 
-        <createIndex tableName="tenant" indexName="id">
+        <!--<createIndex tableName="tenant-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-tenant-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="tenant" columnName="nationality"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="tenant_nationality_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding nationality fk on tenant table
         </comment>
@@ -226,21 +224,21 @@
             <column name="county" type="int"/>
         </createTable>
 
-        <createIndex tableName="town" indexName="id">
+        <!--<createIndex tableName="town-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-town-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="town" columnName="county"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="county_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding county fk on town table
         </comment>
@@ -271,21 +269,21 @@
             <column name="town" type="int"/>
         </createTable>
 
-        <createIndex tableName="estate" indexName="id">
+        <!--<createIndex tableName="estate-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-town-estate-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="estate" columnName="town"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="town_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding town fk on estate table
         </comment>
@@ -318,21 +316,21 @@
             <column name="landlord" type="int"/>
         </createTable>
 
-        <createIndex tableName="house" indexName="id">
+       <!-- <createIndex tableName="house-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-house-estate-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="house" columnName="estate"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="house_estate_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding estate fk on house table
         </comment>
@@ -346,14 +344,14 @@
     </changeSet>
 
     <changeSet id="db-house-landlord-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="house" columnName="landlord"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="house_landlord_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding landlord fk on house table
         </comment>
@@ -386,21 +384,21 @@
             <column name="house" type="int"/>
         </createTable>
 
-        <createIndex tableName="unit" indexName="id">
+        <!--<createIndex tableName="unit-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-unit-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="unit" columnName="house"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="unit_house_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding house fk on unit table
         </comment>
@@ -427,7 +425,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="ref" type="varchar(25)"/>
-            <column name="tenant" type="varchar(100)"/>
+            <column name="tenant" type="int"/>
             <column name="landlord" type="int"/>
             <column name="unit" type="int"/>
             <column name="house" type="int"/>
@@ -438,21 +436,21 @@
             <column name="deposit" type="decimal(10,2)"/>
         </createTable>
 
-        <createIndex tableName="unit" indexName="id">
+        <!--<createIndex tableName="tenancy_agreement-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-tenancy-agreement-tenant-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="tenancy_agreement" columnName="tenant"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_tenant_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding tenant fk on tenancy_agreement table
         </comment>
@@ -466,14 +464,14 @@
     </changeSet>
 
     <changeSet id="db-tenancy-agreement-landlord-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+       <!-- <preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="tenancy_agreement" columnName="landlord"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_landlord_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding tenant fk on tenancy_agreement table
         </comment>
@@ -487,14 +485,14 @@
     </changeSet>
 
     <changeSet id="db-tenancy-agreement-unit-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="tenancy_agreement" columnName="unit"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="tenancy_agreement_unit_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding tenant fk on tenancy_agreement table
         </comment>
@@ -531,21 +529,21 @@
             <column name="date_created" type="datetime"/>
         </createTable>
 
-        <createIndex tableName="landlord_agreement" indexName="id">
+        <!--<createIndex tableName="landlord_agreement-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
     <changeSet id="db-landlord-agreement-landlord-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+       <!-- <preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="landlord_agreement" columnName="landlord"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="landlord_agreement_landlord_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding landlord fk on landlord_agreement table
         </comment>
@@ -559,14 +557,14 @@
     </changeSet>
 
     <changeSet id="db-landlord-agreement-house-fk" author="aojwang">
-        <preConditions onFail="MARK_RAN">
+        <!--<preConditions onFail="MARK_RAN">
             <and>
                 <columnExists tableName="landlord_agreement" columnName="house"/>
                 <not>
                     <foreignKeyConstraintExists foreignKeyName="landlord_agreement_house_ref"/>
                 </not>
             </and>
-        </preConditions>
+        </preConditions>-->
         <comment>
             Adding house fk on landlord_agreement table
         </comment>
@@ -599,9 +597,9 @@
             <column name="phone_contact" type="varchar(30)"/>
         </createTable>
 
-        <createIndex tableName="agent_index" indexName="id">
+        <!--<createIndex tableName="agent-index" indexName="id">
             <column name="id" />
-        </createIndex>
+        </createIndex>-->
 
     </changeSet>
 
