@@ -1,5 +1,6 @@
 package org.restate.project.service;
 
+import org.restate.project.model.Estate;
 import org.restate.project.model.House;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface HouseService {
     public House getHouseByName(String name);
     public House getHouseById(Integer id);
     public List<House> getHouseList();
+    public List<House> getHousesByEstate(Estate estate);
 
 }

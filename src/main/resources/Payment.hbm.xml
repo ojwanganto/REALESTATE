@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.restate.project.model.Payment" table="payment">
+        <meta attribute="class-description">
+            Captures payment details
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="paymentType" lazy="false" class="org.restate.project.model.PaymentType"  not-null="true" column="payment_type"/>
+        <many-to-one name="tenant" lazy="false" class="org.restate.project.model.Tenant"  not-null="true" column="tenant"/>
+        <many-to-one name="unit" lazy="false" class="org.restate.project.model.Unit"  not-null="true" column="unit"/>
+        <property name="effectiveDate" column="effective_date" type="java.util.Date"/>
+        <property name="amount" column="amount" type="java.lang.Double" />
+
+    </class>
+</hibernate-mapping>
+
