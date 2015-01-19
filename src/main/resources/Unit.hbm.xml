@@ -15,6 +15,7 @@
         <property name="description" column="description" type="string"/>
         <property name="category" column="category" type="integer"/>
         <property name="categoryType" column="category_type" type="integer"/>
+        <property name="occupied" column="isOccupied" type="boolean" />
         <many-to-one name="house" lazy="false"  class="org.restate.project.model.House" not-null="true" column="house"/>
 
     </class>

@@ -7,14 +7,24 @@ import java.util.Date;
  */
 public class Payment extends BaseObject {
 
-
+	private String description;
     private PaymentType paymentType;
+	private PaymentMode paymentMode;
+	private Integer paymentInOut;
     private Tenant tenant;
     private Unit unit;
     private Double amount;
-    private Date effectiveDate;
+    private Date paymentPeriod;
 
-    public PaymentType getPaymentType() {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public PaymentType getPaymentType() {
         return paymentType;
     }
 
@@ -38,14 +48,6 @@ public class Payment extends BaseObject {
         this.unit = unit;
     }
 
-    public Date getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    public void setEffectiveDate(Date effectiveDate) {
-        this.effectiveDate = effectiveDate;
-    }
-
     public Double getAmount() {
         return amount;
     }
@@ -53,4 +55,28 @@ public class Payment extends BaseObject {
     public void setAmount(Double amount) {
         this.amount = amount;
     }
+
+	public PaymentMode getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(PaymentMode paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public Integer getPaymentInOut() {
+		return paymentInOut;
+	}
+
+	public void setPaymentInOut(Integer paymentInOut) {
+		this.paymentInOut = paymentInOut;
+	}
+
+	public Date getPaymentPeriod() {
+		return paymentPeriod;
+	}
+
+	public void setPaymentPeriod(Date paymentPeriod) {
+		this.paymentPeriod = paymentPeriod;
+	}
 }
