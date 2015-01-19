@@ -11,6 +11,7 @@ public class House extends BaseObject {
     private Estate estate;
     private Landlord landlord;
     private String plotNo;
+	private boolean assigned;
 
 
     //default constructor
@@ -57,4 +58,12 @@ public class House extends BaseObject {
     public void setLandlord(Landlord landlord) {
         this.landlord = landlord;
     }
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean assigned) {
+		this.assigned = assigned;
+	}
 }
