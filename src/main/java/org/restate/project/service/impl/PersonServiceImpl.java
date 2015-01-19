@@ -4,7 +4,6 @@ import org.restate.project.DAO.PersonDAO;
 import org.restate.project.model.Person;
 import org.restate.project.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

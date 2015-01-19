@@ -1,13 +1,10 @@
 package org.restate.project.service.impl;
 
-import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.TenancyAgreementDAO;
-import org.restate.project.model.Country;
 import org.restate.project.model.House;
 import org.restate.project.model.TenancyAgreement;
 import org.restate.project.model.Tenant;
 import org.restate.project.model.Unit;
-import org.restate.project.service.CountryService;
 import org.restate.project.service.TenancyAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,11 +1,8 @@
 package org.restate.project.service.impl;
 
 import org.restate.project.DAO.LandlordAgreementDAO;
-import org.restate.project.DAO.TenancyAgreementDAO;
 import org.restate.project.model.LandlordAgreement;
-import org.restate.project.model.TenancyAgreement;
 import org.restate.project.service.LandlordAgreementService;
-import org.restate.project.service.TenancyAgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

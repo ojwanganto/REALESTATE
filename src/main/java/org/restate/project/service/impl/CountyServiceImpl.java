@@ -1,10 +1,7 @@
 package org.restate.project.service.impl;
 
-import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.CountyDAO;
-import org.restate.project.model.Country;
 import org.restate.project.model.County;
-import org.restate.project.service.CountryService;
 import org.restate.project.service.CountyService;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,10 +1,7 @@
 package org.restate.project.service.impl;
 
-import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.LandlordDAO;
-import org.restate.project.model.Country;
 import org.restate.project.model.Landlord;
-import org.restate.project.service.CountryService;
 import org.restate.project.service.LandlordService;
 import org.springframework.beans.factory.annotation.Autowired;
 

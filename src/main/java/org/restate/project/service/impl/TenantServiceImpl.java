@@ -1,7 +1,6 @@
 package org.restate.project.service.impl;
 
 import org.restate.project.DAO.TenantDAO;
-import org.restate.project.DAO.TenantDAO;
 import org.restate.project.model.Tenant;
 import org.restate.project.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;

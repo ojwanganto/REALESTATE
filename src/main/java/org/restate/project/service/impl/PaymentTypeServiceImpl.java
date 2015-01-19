@@ -1,10 +1,7 @@
 package org.restate.project.service.impl;
 
-import org.restate.project.DAO.AgentDAO;
 import org.restate.project.DAO.PaymentTypeDAO;
-import org.restate.project.model.Agent;
 import org.restate.project.model.PaymentType;
-import org.restate.project.service.AgentService;
 import org.restate.project.service.PaymentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
