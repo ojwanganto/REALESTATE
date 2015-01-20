@@ -1,5 +1,6 @@
 package org.restate.project.DAO;
 
+import org.restate.project.model.Country;
 import org.restate.project.model.Estate;
 import org.restate.project.model.House;
 
@@ -13,7 +14,5 @@ public interface HouseDAO {
     public House getHouseByName(String name);
     public House getHouseById(Integer id);
     public List<House> getHouseList();
-	public List<House> getUnassignedHouseList();
     public List<House> getHousesByEstate(Estate estate);
-	public List<House> getUnassignedHousesByEstate(Estate estate);
 }

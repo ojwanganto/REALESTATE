@@ -71,7 +71,7 @@ public class AjaxCallsController {
     @ResponseBody
     public List<Unit> getUnitsInHouse(@PathVariable Integer id) {
 
-        return unitService.getVacantUnitByHouse(houseService.getHouseById(id));
+        return unitService.getUnitByHouse(houseService.getHouseById(id));
     }
 
     @RequestMapping("unitList/{houseId}/{tenantId}")

@@ -20,22 +20,21 @@
 
     $('#estateList').change(function() {
         var estateId = $('#estateList').val().trim();
-
-        if(estateId == "Select Estate" || estateId == null){
-            $("#houseList").html('<select id="houseList"> <option value="0">Select House</option>');
+        if(estateId == null)
             return false;
-        }
 
         var eId = $.trim(estateId);
 
         $.getJSON('${pageContext.request.contextPath}/ajaxCalls/houseList/' + estateId, function(houseList) {
-            var inputString = '<select id="houseList"> <option value="0">Select House</option>';
+            var inputString = '<select id="houseList"> <option>Select House</option>';
             $.each(houseList, function(){
                 inputString = inputString + '<option value="' + this['id'] + '" > ' + this['name'] + '</option>';
+                //console.log(this['id'] + " -->" + this['name']);
             });
 
             inputString = inputString + "</select>";
             $("#houseList").html(inputString);
+           // console.log(inputString);
 
         });
     });
@@ -46,12 +45,11 @@
 
     $('#houseList').change(function() {
         var houseId = $('#houseList').val().trim();
-        if(houseId == "Select Unit" || houseId == null) {
-            $("#unitList").html('<select id="unitList"> <option value="0">Select Unit</option>');
+        if(houseId == null)
             return false;
-        }
+
         $.getJSON('${pageContext.request.contextPath}/ajaxCalls/unitList/' + houseId, function(unitList) {
-            var inputString = '<select id="unitList"> <option value="0">Select Unit</option>';
+            var inputString = '<select id="unitList"> ';
             $.each(unitList, function(){
                 inputString = inputString + '<option value="' + this['id'] + '" > ' + this['name'] + '</option>';
 
@@ -108,12 +106,12 @@
 
                         <select id="countyList">
                             <option>Select County</option>
-                            <%--<c:forEach var="county" items="${counties}">
+                            <c:forEach var="county" items="${counties}">
                                 <option
                                         <c:if test="${status.value==county.id}">selected</c:if> value="
                                         ${county.id}">${county.code}
                                     - ${country.name} </option>
-                            </c:forEach>--%>
+                            </c:forEach>
                         </select>
 
                 </td>
@@ -140,7 +138,7 @@
                 <td valign="top">
 
                         <select id="houseList">
-                            <option value="0">Select House</option>
+                            <option>Select House</option>
                         </select>
 
                 </td>

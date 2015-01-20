@@ -42,6 +42,7 @@ public class UnitHibernateDao implements UnitDAO {
     @Override
     public List<Unit> getUnitList() {
         Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Unit.class);
+        /*log.info("Got this number of Units "+ criteria.list().size());*/
         criteria.addOrder(Order.asc("name"));
         return criteria.list();
     }
@@ -54,26 +55,7 @@ public class UnitHibernateDao implements UnitDAO {
         return c.list();
     }
 
-	@Transactional
-	@Override
-	public List<Unit> getVacantUnitByHouse(House house) {
-		Criteria c = sessionfactory.getCurrentSession().createCriteria(Unit.class)
-				.add(Restrictions.eq("house", house))
-				.add(Restrictions.eq("occupied", false));
-
-		return c.list();
-	}
-
-	@Transactional
-	@Override
-	public List<Unit> getVacantUnits() {
-		Criteria criteria = sessionfactory.getCurrentSession().createCriteria(Unit.class);
-		criteria.add(Restrictions.eq("occupied", false));
-		criteria.addOrder(Order.asc("name"));
-		return criteria.list();
-	}
-
-	@Transactional
+    @Transactional
     @Override
     public Unit getUnitById(Integer id) {
         return (Unit)sessionfactory.getCurrentSession().get(Unit.class,id);

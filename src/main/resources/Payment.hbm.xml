@@ -11,16 +11,11 @@
         <id name="id" type="int" column="id">
             <generator class="native"/>
         </id>
-        <property name="description" type="java.lang.String" column="description" />
         <many-to-one name="paymentType" lazy="false" class="org.restate.project.model.PaymentType"  not-null="true" column="payment_type"/>
-        <many-to-one name="paymentMode" lazy="false" class="org.restate.project.model.PaymentMode"  not-null="true" column="payment_mode"/>
-        <property name="paymentInOut" column="payment_in_out" type="int" not-null="true" />
         <many-to-one name="tenant" lazy="false" class="org.restate.project.model.Tenant"  not-null="true" column="tenant"/>
         <many-to-one name="unit" lazy="false" class="org.restate.project.model.Unit"  not-null="true" column="unit"/>
-        <property name="paymentPeriod" column="payment_period" type="java.util.Date"/>
+        <property name="effectiveDate" column="effective_date" type="java.util.Date"/>
         <property name="amount" column="amount" type="java.lang.Double" />
-        <property name="dateCreated" column="date_created" type="java.util.Date"/>
-        <many-to-one name="createdBy" lazy="false" column="created_by" class="org.restate.project.model.Person" />
 
     </class>
 </hibernate-mapping>
