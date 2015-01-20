@@ -14,7 +14,6 @@
         <property name="name" column="name" type="string"/>
         <property name="description" column="description" type="string"/>
         <property name="plotNo" column="plot_number" type="string"/>
-        <property name="assigned" column="is_assigned" type="boolean" />
         <many-to-one name="estate" lazy="false" cascade="persist" class="org.restate.project.model.Estate" not-null="true" column="estate"/>
 
         <many-to-one name="landlord" lazy="false" cascade="persist" class="org.restate.project.model.Landlord" not-null="true" column="landlord"/>

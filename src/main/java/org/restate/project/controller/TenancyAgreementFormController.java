@@ -126,8 +126,6 @@ public class TenancyAgreementFormController {
         tenancyAgreement.setHouse(selHouse);
         tenancyAgreement.setReferenceNumber(selLandlord.getId() + "/" + selHouse.getId()+"/"+selUnit.getId());
         tenancyAgreementService.saveTenancyAgreement(tenancyAgreement);
-		selUnit.setOccupied(true);
-		unitService.saveUnit(selUnit);
 
         return SUCCESS_VIEW;
     }

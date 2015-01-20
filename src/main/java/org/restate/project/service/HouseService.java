@@ -14,8 +14,6 @@ public interface HouseService {
     public House getHouseByName(String name);
     public House getHouseById(Integer id);
     public List<House> getHouseList();
-	public List<House> getUnassignedHouseList();
     public List<House> getHousesByEstate(Estate estate);
-	public List<House> getUnassignedHousesByEstate(Estate estate);
 
 }
