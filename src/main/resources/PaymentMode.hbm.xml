@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="org.restate.project.model.PaymentType" table="payment_mode">
+    <class name="org.restate.project.model.PaymentMode" table="payment_mode">
         <meta attribute="class-description">
             Maps details of PaymentMode object
         </meta>
