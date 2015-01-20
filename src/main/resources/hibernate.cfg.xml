@@ -35,8 +35,6 @@
         <mapping resource="Agent.hbm.xml"></mapping>
         <mapping resource="PaymentType.hbm.xml"></mapping>
         <mapping resource="Payment.hbm.xml"></mapping>
-        <mapping resource="PaymentMode.hbm.xml"></mapping>
-        <mapping resource="PaymentDetails.hbm.xml"></mapping>
 
     </session-factory>
 </hibernate-configuration>

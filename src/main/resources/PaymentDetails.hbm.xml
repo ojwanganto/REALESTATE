@@ -17,8 +17,9 @@
         <property name="bankTransactionNo" column="bank_transaction_no" type="java.lang.String" />
         <property name="mobileMoneyTransactionCode" column="mobile_money_trans_code" type="java.lang.String" />
         <property name="mobileNumber" type="java.lang.String" column="mobile_no" />
-        <property name="dateCreated" column="date_created" type="java.util.Date"/>
+        <property name="dateCreated" column="effective_date" type="java.util.Date"/>
         <many-to-one name="createdBy" lazy="false" column="created_by" class="org.restate.project.model.Person" />
+
     </class>
 </hibernate-mapping>
 

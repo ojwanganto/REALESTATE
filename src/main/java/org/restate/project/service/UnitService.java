@@ -18,8 +18,6 @@ public interface UnitService {
     public Unit getUnitById(Integer id);
     public List<Unit> getUnitList();
     public List<Unit> getUnitByHouse(House house);
-	public List<Unit> getVacantUnitByHouse(House house);
-	public List<Unit> getVacantUnits();
 
 
 }

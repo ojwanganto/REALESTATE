@@ -43,7 +43,6 @@
 
                     <spring:bind path="landlordAgreement.landlord.id">
                         <select name="${status.expression}">
-                            <option>Select Landlord</option>
                             <c:forEach var="landlord" items="${landlords}">
                                 <option
                                         <c:if test="${status.value==landlord.id}">selected</c:if> value="
@@ -60,7 +59,6 @@
                 <td valign="top">
                     <spring:bind path="landlordAgreement.house.id">
                         <select name="${status.expression}" id="houseList">
-                            <option>Select House</option>
                             <c:forEach var="house" items="${houses}">
                                 <option
                                         <c:if test="${status.value==house.id}">selected</c:if> value="

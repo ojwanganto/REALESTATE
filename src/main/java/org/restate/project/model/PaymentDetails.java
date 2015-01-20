@@ -3,7 +3,7 @@ package org.restate.project.model;
 /**
  * Model class for PaymentDetails i.e additional payment information
  */
-public class PaymentDetails extends BaseObject{
+public class PaymentDetails extends BaseObject {
 
     private Payment payment;
     private String bankName;

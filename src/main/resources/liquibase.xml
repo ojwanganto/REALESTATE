@@ -796,4 +796,18 @@
         <sql> INSERT INTO `payment_mode`(id, name) VALUES ('1', 'Cash'), ('2', 'Bank-Slip'), ('3', 'Mobile-Money') </sql>
     </changeSet>
 
+    <changeSet author="aojwang" id="addColumn-isOccupied">
+        <addColumn
+                   tableName="unit">
+            <column name="isOccupied" type="int" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="aojwang" id="addColumn-is_assigned_to_house">
+        <addColumn
+                tableName="house">
+            <column name="is_assigned" type="int" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

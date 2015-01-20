@@ -1,8 +1,11 @@
 package org.restate.project.service.impl;
 
+import org.restate.project.DAO.CountryDAO;
 import org.restate.project.DAO.HouseDAO;
+import org.restate.project.model.Country;
 import org.restate.project.model.Estate;
 import org.restate.project.model.House;
+import org.restate.project.service.CountryService;
 import org.restate.project.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,18 +39,8 @@ public class HouseServiceImpl implements HouseService {
         return houseDAO.getHouseList();
     }
 
-	@Override
-	public List<House> getUnassignedHouseList() {
-		return houseDAO.getUnassignedHouseList();
-	}
-
-	@Override
+    @Override
     public List<House> getHousesByEstate(Estate estate) {
         return houseDAO.getHousesByEstate(estate);
     }
-
-	@Override
-	public List<House> getUnassignedHousesByEstate(Estate estate) {
-		return houseDAO.getUnassignedHousesByEstate(estate);
-	}
 }
