@@ -45,7 +45,15 @@ public class HouseHibernateDao implements HouseDAO {
         return criteria.list();
     }
 
-    @Transactional
+	@Transactional
+	@Override
+	public List<House> getUnassignedHouseList() {
+		Criteria c = sessionfactory.getCurrentSession().createCriteria(House.class)
+				.add(Restrictions.eq("assigned", false));
+		return c.list();
+	}
+
+	@Transactional
     @Override
     public List<House> getHousesByEstate(Estate estate) {
         Criteria c = sessionfactory.getCurrentSession().createCriteria(House.class)
@@ -53,7 +61,16 @@ public class HouseHibernateDao implements HouseDAO {
         return c.list();
     }
 
-    @Transactional
+	@Transactional
+	@Override
+	public List<House> getUnassignedHousesByEstate(Estate estate) {
+		Criteria c = sessionfactory.getCurrentSession().createCriteria(House.class)
+				.add(Restrictions.eq("estate", estate))
+				.add(Restrictions.eq("assigned", false));
+		return c.list();
+	}
+
+	@Transactional
     @Override
     public House getHouseById(Integer id) {
         return (House)sessionfactory.getCurrentSession().get(House.class,id);

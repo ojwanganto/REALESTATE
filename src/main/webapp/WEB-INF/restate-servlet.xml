@@ -81,8 +81,8 @@
     <bean id="agent" class="org.restate.project.model.Agent"></bean>
     <bean id="paymentType" class="org.restate.project.model.PaymentType"></bean>
     <bean id="payment" class="org.restate.project.model.Payment"></bean>
-    <bean id="paymentMode" class="org.restate.project.model.PaymentMode"></bean>
-    <bean id="paymentDetails" class="org.restate.project.model.PaymentDetails"></bean>
+    <bean id="paymentMode" class="org.restate.project.model.PaymentMode" />
+    <bean id="paymentDetails" class="org.restate.project.model.PaymentDetails"/>
 
 
 
@@ -136,6 +136,8 @@
 
     <bean id="paymentDetailsDAO" class="org.restate.project.DAO.hibernate.PaymentDetailsHibernateDao"></bean>
     <bean id="paymentDetailsService" class="org.restate.project.service.impl.PaymentDetailsServiceImpl"></bean>
+
+
 
 
     <tx:annotation-driven />

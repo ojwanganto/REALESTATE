@@ -45,7 +45,7 @@ public class LandlordAgreementFormController {
 
     @ModelAttribute("houses")
     public List<House> getHouses() {
-        return houseService.getHouseList();
+        return houseService.getUnassignedHouseList();
     }
 
     @ModelAttribute("landlords")
@@ -85,10 +85,12 @@ public class LandlordAgreementFormController {
 
 
         landlordAgreement.setDateCreated(new Date());
+		House house = landlordAgreement.getHouse();
+		house.setAssigned(true);
         landlordAgreement.setReferenceNumber(landlordAgreement.getLandlord().getId() + "/" + landlordAgreement.getHouse().getId());
         if(landlordAgreement !=null){
-         landlordAgreementService.saveLandlordAgreement(landlordAgreement);
-            log.info("Agreement should be saved");
+        	landlordAgreementService.saveLandlordAgreement(landlordAgreement);
+			houseService.saveHouse(house);
         }
         else {
             log.info("Object to be saved was null");

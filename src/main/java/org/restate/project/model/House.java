@@ -1,7 +1,5 @@
 package org.restate.project.model;
 
-import org.codehaus.jackson.annotate.JsonManagedReference;
-
 /**
  * A class that contains information about a house/block in an estate
  */
@@ -11,6 +9,7 @@ public class House extends BaseObject {
     private Estate estate;
     private Landlord landlord;
     private String plotNo;
+	private boolean assigned;
 
 
     //default constructor
@@ -18,7 +17,7 @@ public class House extends BaseObject {
 
     }
 
-    public House(String name,String description, Estate estate,Landlord landlord){
+    public House(String name, String description, Estate estate, Landlord landlord){
         this.setName(name);
         this.description = description;
         this.estate = estate;
@@ -57,4 +56,12 @@ public class House extends BaseObject {
     public void setLandlord(Landlord landlord) {
         this.landlord = landlord;
     }
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean assigned) {
+		this.assigned = assigned;
+	}
 }

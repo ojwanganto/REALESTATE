@@ -9,6 +9,7 @@ public class Unit extends BaseObject {
     private String description;
     private Integer category;
     private Integer categoryType;
+	private boolean occupied;
 
     public Unit() {
     }
@@ -49,4 +50,12 @@ public class Unit extends BaseObject {
     public void setCategoryType(Integer categoryType) {
         this.categoryType = categoryType;
     }
+
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
 }
