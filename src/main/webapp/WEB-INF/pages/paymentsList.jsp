@@ -23,23 +23,27 @@
         <table width="100%"  id="paymenttable">
             <thead>
             <tr>
-                <td>Type</td>
                 <td>Tenant</td>
-                <td>Unit</td>
                 <td>House</td>
+                <td>Unit</td>
+                <td>Type</td>
+                <td>Mode</td>
+                <td>Period</td>
                 <td>Amount</td>
-                <td>Effective Date</td>
+
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${payments}" var="c" varStatus="status">
                 <tr>
-                    <td>${c.paymentType.name}</td>
                     <td>${c.tenant.name}</td>
-                    <td>${c.unit.name}</td>
                     <td>${c.unit.house.name}</td>
+                    <td>${c.unit.name}</td>
+                    <td>${c.paymentType.name}</td>
+                    <td>${c.paymentMode.name}</td>
+                    <td>${c.paymentPeriod}</td>
                     <td>${c.amount}</td>
-                    <td>${c.effectiveDate}</td>
+
 
                     <td><a href="receipt.print?id=${c.id}">Print</a></td>
                 </tr>

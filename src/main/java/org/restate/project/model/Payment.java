@@ -1,7 +1,5 @@
 package org.restate.project.model;
 
-import java.util.Date;
-
 /**
  * Captures payment details
  */
@@ -14,7 +12,7 @@ public class Payment extends BaseObject {
     private Tenant tenant;
     private Unit unit;
     private Double amount;
-    private Date paymentPeriod;
+    private String paymentPeriod;
 
 	public String getDescription() {
 		return description;
@@ -72,11 +70,11 @@ public class Payment extends BaseObject {
 		this.paymentInOut = paymentInOut;
 	}
 
-	public Date getPaymentPeriod() {
+	public String getPaymentPeriod() {
 		return paymentPeriod;
 	}
 
-	public void setPaymentPeriod(Date paymentPeriod) {
+	public void setPaymentPeriod(String paymentPeriod) {
 		this.paymentPeriod = paymentPeriod;
 	}
 }

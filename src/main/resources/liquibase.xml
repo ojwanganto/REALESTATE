@@ -605,7 +605,7 @@
 
     </changeSet>
 
-    <changeSet id="db-payment_type" author="payment_type">
+    <changeSet id="db-payment_type" author="aojwang">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="payment_type"/>
@@ -624,7 +624,7 @@
 
     </changeSet>
 
-    <changeSet id="db-payment_mode" author="payment_type">
+    <changeSet id="db-payment_mode" author="aojwang">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="payment_mode"/>
@@ -662,7 +662,7 @@
             <column name="payment_in_out" type="int"/>
             <column name="unit" type="int"/>
             <column name="amount" type="decimal(10,2)"/>
-            <column name="payment_period" type="datetime" />
+            <column name="payment_period" type="varchar(20)" />
             <column name="date_created" type="datetime" />
             <column name="created_by" type="int"/>
         </createTable>
@@ -794,20 +794,6 @@
 
     <changeSet author="aojwang" id="default-payment_mode_config">
         <sql> INSERT INTO `payment_mode`(id, name) VALUES ('1', 'Cash'), ('2', 'Bank-Slip'), ('3', 'Mobile-Money') </sql>
-    </changeSet>
-
-    <changeSet author="aojwang" id="addColumn-isOccupied">
-        <addColumn
-                   tableName="unit">
-            <column name="isOccupied" type="int" defaultValue="0"/>
-        </addColumn>
-    </changeSet>
-
-    <changeSet author="aojwang" id="addColumn-is_assigned_to_house">
-        <addColumn
-                tableName="house">
-            <column name="is_assigned" type="int" defaultValue="0"/>
-        </addColumn>
     </changeSet>
 
 </databaseChangeLog>
